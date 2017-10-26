@@ -13,7 +13,9 @@
 	</head>
 
 	<body>
-
+		
+		<canvas id="canvas-real" class="canvas" width='800px' height='600px'></canvas>
+		<canvas id="canvas-draft" class="canvas" width='800px' height='600px'></canvas>
 
         <!--Javascript Libraries-->
 		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
@@ -21,7 +23,16 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         
         <!--Scripts-->
-        <script src="scripts/main.js"></script>
+		<script src="scripts/canvas-common.js"></script>
+		<script src="scripts/drawing-line.js"></script>
+		<script src="scripts/drawing-rectangle.js"></script>
+	
 
+
+		<script type='text/javascript'>    
+			// Switch based on User input, for example like clicking a button or something else. We will talk about this part in the section after this one. 
+			// currentFunction = new DrawingLine(contextReal,contextDraft);
+			currentFunction = new DrawingLine(contextReal,contextDraft);
+		</script>
 	</body>
 </html>
