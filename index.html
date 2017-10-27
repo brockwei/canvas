@@ -9,12 +9,28 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles/main.css">
-	</head>
-	<body>
-		
-		<canvas id="canvas-real" class="canvas" width='800px' height='600px'></canvas>
-		<canvas id="canvas-draft" class="canvas" width='800px' height='600px'></canvas>
 
+	</head>
+
+	<body>
+		<!--
+		<button id="color">Color</button>
+		<button id="eraser">eraser</button>
+		-->
+		<div id="menu">
+			<div id="toolsMenu">
+				<div class="toolButton">freehand</div>
+				<div class="toolButton">line</div>
+				<div class="toolButton">rectangle</div>
+				<div class="toolButton">circle</div>
+				<div class="toolButton"></div>
+			</div>
+			<div id="colorMenu"></div>
+		</div>
+		<div id="canvasContainer">
+			<canvas id="canvas-real" class="canvas" width='600px' height='400px'></canvas>
+			<canvas id="canvas-draft" class="canvas" width='2000px' height='2000px'></canvas>
+		</div>
         <!--Javascript Libraries-->
 		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
