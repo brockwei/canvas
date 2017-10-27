@@ -1,30 +1,35 @@
 class DrawingLine extends PaintFunction{
-    constructor(contextReal){
+    constructor(contextReal,contextDraft){
         super();
-        this.context = contextReal;            
+        this.contextReal = contextReal;
+        this.contextDraft = contextDraft;            
     }
     
     onMouseDown(coord,event){
-        this.context.strokeStyle = "#df4b26";
-        this.context.lineJoin = "round";
-        this.context.lineWidth = 5;
-        this.context.beginPath();
-        this.context.moveTo(coord[0],coord[1]);
-        this.draw(coord[0],coord[1]);
+        this.contextReal.strokeStyle = "#df4b26";
+        this.contextDraft.strokeStyle = "#gray";
+        this.contextReal.lineJoin = "round";
+        this.contextReal.lineWidth = 5;
+        this.origX = coord[0];
+        this.origY = coord[1];
+        this.contextReal.beginPath();
+        this.contextReal.moveTo(this.origX,this.origY);
     }
+
     onDragging(coord,event){
-        this.draw(coord[0],coord[1]);
+        this.contextDraft.strokeStyle = "gray";
+        this.contextDraft.setLineDash([3,3])        
+        this.contextDraft.closePath();
+        this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+        this.contextDraft.beginPath(); 
+        this.contextDraft.moveTo(this.origX,this.origY);
+        this.contextDraft.lineTo(coord[0],coord[1]);
+        this.contextDraft.stroke();
     }
 
-    onMouseMove(){}
-    onMouseUp(){}
-    onMouseLeave(){}
-    onMouseEnter(){}
-
-    draw(x,y){
-        this.context.lineTo(x,y);
-        this.context.moveTo(x,y);
-        this.context.closePath();
-        this.context.stroke();    
+    onMouseUp(coord,event){
+        this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+        this.contextReal.lineTo(coord[0],coord[1]);
+        this.contextReal.stroke();
     }
 }
