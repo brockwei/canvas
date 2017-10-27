@@ -3,7 +3,8 @@ html, body {
 	margin:0;
 }
 
-#canvas-real {
+#canvas-real,
+#canvas-draft {
 	border: 1px dotted black; 
 }
 
