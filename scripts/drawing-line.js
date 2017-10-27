@@ -6,19 +6,18 @@ class DrawingLine extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.contextReal.strokeStyle = "#df4b26";
-        this.contextDraft.strokeStyle = "#gray";
+        this.contextReal.strokeStyle = "#df4b26";//line color
+        this.contextDraft.strokeStyle = "#df4b26";//line color
         this.contextReal.lineJoin = "round";
-        this.contextReal.lineWidth = 5;
+        this.contextReal.lineWidth = 5;//line width
+        this.contextDraft.lineWidth = 5;//line width
         this.origX = coord[0];
         this.origY = coord[1];
         this.contextReal.beginPath();
         this.contextReal.moveTo(this.origX,this.origY);
     }
 
-    onDragging(coord,event){
-        this.contextDraft.strokeStyle = "gray";
-        this.contextDraft.setLineDash([3,3])        
+    onDragging(coord,event){       
         this.contextDraft.closePath();
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.beginPath(); 
