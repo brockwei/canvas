@@ -17,7 +17,7 @@ class DrawingLine extends PaintFunction{
         this.contextReal.moveTo(this.origX,this.origY);
     }
 
-    onDragging(coord,event){       
+    onMouseMove(coord,event){       
         this.contextDraft.closePath();
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.beginPath(); 
