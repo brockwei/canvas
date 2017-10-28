@@ -14,12 +14,12 @@ $('#canvas-draft').mousedown(function(e){
     dragging = true;
 });
 $('#canvas-draft').mousemove(function(e){
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
     if(dragging){
-        let mouseX = e.pageX - this.offsetLeft;
-        let mouseY = e.pageY - this.offsetTop;
         currentFunction.onDragging([mouseX,mouseY],e);
     }
-    currentFunction.onMouseMove(e,this);
+    currentFunction.onMouseMove([mouseX,mouseY],e);
 });
 $('#canvas-draft').mouseup(function(e){
     dragging = false;
