@@ -19,6 +19,9 @@ canvas {
 	top: 0;
 	left: 0;
 	background-color: transparent;
+	background-image: none;
+	border: 1px dotted gray;
+
 	/* height: 100px; */
 	/* width: 300px; */
 }

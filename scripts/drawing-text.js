@@ -3,15 +3,15 @@ class DrawingText extends PaintFunction{
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.actionCount = 0;
+        this.fontWeight = 600;
+        this.fontSize = 35;
+        this.fontStyle = "Arial";
         this.textX = [];
         this.textY = [];
     }
     
     onMouseDown(coord,event){
-        this.contextReal.font = "48px serif";
-        this.contextReal.lineWidth = "5";
-        
+        this.contextReal.font = `${this.fontWeight} ${this.fontSize}px ${this.fontStyle}`;
         this.textX.push(coord[0]);
         this.textY.push(coord[1]);
         console.log('inside if (x,y) '+this.textX[0]+','+this.textY[0]);
@@ -28,6 +28,7 @@ class DrawingText extends PaintFunction{
         let inputText = $('#textInput').val();
         console.log('input is '+ inputText);
         contextReal.fillText(inputText,this.textX[0],this.textY[0]);
+        contextReal.stroke();
         $('#textInput').css({"display":"none","top":"0","left":"0"});
         $('body').find('input[type=text],input').val('');
         this.textX= [];
