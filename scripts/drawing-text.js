@@ -23,8 +23,6 @@ class DrawingText extends PaintFunction{
         $('#textInput').css({"display":"inline-block","top":this.fontStartY,"left":this.textX[0],"font-size":this.fontSize,"color":this.fillStyle,"font-family":this.fontStyle,"font-weight":this.fontWeight,"padding":"0"});
         
         //If user click outside the input box, text will be printed on the canvas real
-        var keycode = [(event.keyCode ? event.keyCode : event.which)];
-        console.log ('key code '+keycode);
         if ((this.textX.length > 1) && (event.target.id != $('#textInput'))){
             this.outputText(this.contextReal);
         }
