@@ -14,17 +14,19 @@ class DrawingText extends PaintFunction{
         this.contextReal.font = `${this.fontWeight} ${this.fontSize}px ${this.fontStyle}`;
         this.textX.push(coord[0]);
         this.textY.push(coord[1]);
+        this.fontStartY = this.textY[0] - this.fontSize;
         console.log('inside if (x,y) '+this.textX[0]+','+this.textY[0]);
-        $('#textInput').css({"display":"inline-block","top":this.textY[0],"left":this.textX[0]});
+        console.log('fontStartY '+this.fontStartY);
+        $('#textInput').css({"display":"inline-block","top":this.fontStartY,"left":this.textX[0]});
         
-        if (this.textX.length > 1 && event.target.id != $('#textInput')){
-            this.outputText(this.textX,this.textY,this.contextReal);
+        if ((this.textX.length > 1) && (event.target.id != $('#textInput'))){
+            this.outputText(this.contextReal);
         }
         
     }
-    
+
     outputText(ctx){
-        console.log('inside outputText function (x,y) '+this.textX[0]+','+this.textY[0]);
+        console.log('inside outputText function (x,y) '+this.textX[0]+' , '+this.textY[0]);
         let inputText = $('#textInput').val();
         console.log('input is '+ inputText);
         contextReal.fillText(inputText,this.textX[0],this.textY[0]);
@@ -35,5 +37,7 @@ class DrawingText extends PaintFunction{
         this.textY = [];
         console.log('after clearing arrays '+this.textX+' , '+this.textY);
     }
+
+
         
 }
