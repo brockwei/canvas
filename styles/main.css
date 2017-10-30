@@ -20,7 +20,7 @@ body {
 }
 #toolsMenu {
 	height: 100%;
-	width: 320px;
+	width: 360px;
 	border: 1px solid black;
 	display: flex;
 	flex-wrap:wrap;
@@ -39,8 +39,31 @@ body {
 	display: flex;
 	flex-wrap:wrap;
 }
-.toolButton {
+
+.bigToolButton{
 	border: 1px solid black;
+	height: 150px;
+	width: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left
+}
+
+.toolMenuRight{
+	margin: 0 20px;
+	max-width: 210px;
+	display: flex;
+	flex-wrap: wrap;
+	float: left;
+}
+
+.toolMenuLeft{
+	
+}
+
+.toolButton {
+	/*border: 1px solid black;*/
 	height: 50px;
 	width: 50px;
 	display: flex;
@@ -48,10 +71,10 @@ body {
 	align-items: center;
 }
 .toolButton:hover {
-	background: rgb(175,175,175);
+	background: rgb(6,200,210);
 }
 .toolButton:active {
-	background: rgb(152,152,152);
+	background: rgb(6,200,210);
 }
 .showActiveColor {
 	border: 1px solid black;
@@ -71,6 +94,14 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	float: left;
+}
+
+.sizeSlider{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
 }
 .sizeImage {
 	border-radius: 50%;
@@ -90,7 +121,6 @@ body {
 canvas {
 	position: absolute;
 }
-<<<<<<< HEAD
 
 #textInput{
 	display: none;
@@ -105,7 +135,6 @@ canvas {
 	/* height: 100px; */
 	/* width: 300px; */
 }
-=======
 #canvasContainer {
 	background-image:
 	linear-gradient(45deg, rgb(204,204,204) 25%, transparent 25%, transparent 75%, rgb(204,204,204) 75%),
@@ -126,4 +155,3 @@ canvas {
 	border: 1px solid red;
 }
 
->>>>>>> 5a99e2b29b4551f65ecfed23fc3e57f6e915507f
