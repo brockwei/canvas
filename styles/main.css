@@ -14,7 +14,7 @@ body {
 	position: relative;
 	height: auto;
 	border: 1px solid black;
-	background: rgb(204,204,204);
+	background: rgb(231,239,245);
 	display: flex;
 	z-index: 1000;
 }
@@ -40,28 +40,6 @@ body {
 	flex-wrap:wrap;
 }
 
-.bigToolButton{
-	border: 1px solid black;
-	height: 150px;
-	width: 60px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	float: left
-}
-
-.toolMenuRight{
-	margin: 0 20px;
-	max-width: 210px;
-	display: flex;
-	flex-wrap: wrap;
-	float: left;
-}
-
-.toolMenuLeft{
-	
-}
-
 .toolButton {
 	/*border: 1px solid black;*/
 	height: 50px;
@@ -71,11 +49,25 @@ body {
 	align-items: center;
 }
 .toolButton:hover {
-	background: rgb(6,200,210);
+	background: white;
+	border: 1px solid rgb(23,98,161);
+	border-radius: 10px;
 }
 .toolButton:active {
-	background: rgb(6,200,210);
+	background: white;
+	border: 1px solid rgb(23,98,161);
+	border-radius: 10px;
 }
+
+.bigToolButton{
+	height: 150px;
+	width: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left
+}
+
 .showActiveColor {
 	border: 1px solid black;
 	height: 50px;
@@ -97,9 +89,15 @@ body {
 	float: left;
 }
 
-.sizeSlider{
+.flexRow{
 	display: flex;
-	justify-content: center;
+	align-items: center;
+}
+
+.sizeSlider{
+	/*display: flex;*/
+	/*justify-content: center;*/
+	margin-left: 10px;
 	align-items: center;
 	float: left;
 }
@@ -111,7 +109,9 @@ body {
 }
 /*Button*/
 .active {
-	background: rgb(152,152,152);
+	background: white;
+	border: 1px solid rgba(23,98,161,0.5);
+	border-radius: 10px;
 	transition: all 0.2s;
 }
 .activeColor {
