@@ -8,10 +8,10 @@ class DrawingQuadraticCurve extends PaintFunction{
 
         onMouseDown(coord,event){
             if (this.actionCounter === 0){
-                this.contextReal.strokeStyle = "#df4b26";//line color
-                this.contextDraft.strokeStyle = "#df4b26";//line color
-                this.contextReal.lineWidth = 5;//line width
-                this.contextDraft.lineWidth = 5;//line width 
+                this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
+                this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
+                this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
+                this.contextDraft.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
                 this.origX = coord[0];
                 this.origY = coord[1];
                 this.contextReal.beginPath();
@@ -47,6 +47,12 @@ class DrawingQuadraticCurve extends PaintFunction{
                 this.contextReal.quadraticCurveTo(coord[0],coord[1],this.endX,this.endY);
                 this.contextReal.stroke();
                 this.actionCounter = 0;
+                this.onFinish();
             }
+        }
+        onFinish(){
+            canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
+            canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
+            canvasSettings.undoObject.actionCount++;
         }
 }

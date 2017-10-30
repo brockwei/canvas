@@ -20,8 +20,7 @@ class DrawingText extends PaintFunction{
         this.textY.push(coord[1]);
         //Make the input box appear on the clicked area
         this.fontStartY = this.textY[0] - this.fontSize;
-        $('#textInput').css({"display":"inline-block","top":this.fontStartY,"left":this.textX[0],"font-size":this.fontSize,"color":this.fillStyle,"font-family":this.fontStyle,"font-weight":this.fontWeight,"padding":"0"});
-        
+        $('#textInput').css({"display":"block","transform":"translateY("+coord[1]+"px) translateX("+coord[0]+"px)","font-size":this.fontSize,"color":this.fillStyle,"font-family":this.fontStyle,"font-weight":this.fontWeight,"padding":"0"});
         //If user click outside the input box, text will be printed on the canvas real
         if ((this.textX.length > 1) && (event.target.id != $('#textInput'))){
             this.outputText(this.contextReal);
@@ -31,11 +30,17 @@ class DrawingText extends PaintFunction{
     //Print the text on the caval real
     outputText(ctx){
         let inputText = $('#textInput').val();
-        contextReal.fillText(inputText,this.textX[0],this.textY[0]+2);
-        contextReal.stroke();
-        $('#textInput').css({"display":"none","top":"0","left":"0"});
-        $('body').find('input[type=text],input').val('');
+        contextReal.fillText(inputText,this.textX[0],this.textY[0]+this.fontSize);
+        //contextReal.stroke();
+        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
+        $('#textInput').val('');
         this.textX= [];
         this.textY = [];
+        this.onFinish();
+    }
+    onFinish(){
+        canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
+        canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
+        canvasSettings.undoObject.actionCount++;
     }
 }
