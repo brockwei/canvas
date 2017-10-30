@@ -167,6 +167,12 @@ canvas {
 	height: 50px;
 	width: 50px;
 }
+.toolButton,
+.toolButton img,
+.toolButton i{
+	height: 30px;
+	width: 30px;
+}
 #menu{
 	bottom: 0;
 	position: fixed;
@@ -175,11 +181,4 @@ canvas {
 
 .adminContainer{
 	display: none;
-}
-
-.fontColorContainer{
-	display: none;
-}
-
-
 }
