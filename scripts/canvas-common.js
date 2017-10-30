@@ -6,7 +6,7 @@ let contextDraft = canvasDraft.getContext('2d');
 let currentFunction;  //This variable will allow us to change paint function, ie change to draw line, draw square
 let dragging = false;
 
-
+/*
 $('#canvas-draft').mousedown(function(e){
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
@@ -38,7 +38,7 @@ $('#canvas-draft').mouseenter(function(e){
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseEnter([mouseX,mouseY],e);
-});
+});*/
 
 class PaintFunction{
     constructor(){}
@@ -51,7 +51,7 @@ class PaintFunction{
     //Update
     onFinish(){}
 }    
-/*
+
 //Hammertime
 var hammertime = new Hammer(canvasDraft);
 hammertime.on('drag swipe tap press', function(ev) {
@@ -78,4 +78,4 @@ hammertime.on('panend',function(ev){
     console.log("panend");
    
 });
-*/
+
