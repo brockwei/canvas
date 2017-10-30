@@ -36,12 +36,14 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-.toolButton:hover {
+.toolButton:hover,
+.bigToolButton:hover {
 	background: white;
 	border: 1px solid rgb(23,98,161);
 	border-radius: 10px;
 }
-.toolButton:active {
+.toolButton:active,
+.bigToolButton:active {
 	background: white;
 	border: 1px solid rgb(23,98,161);
 	border-radius: 10px;
