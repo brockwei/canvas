@@ -25,27 +25,11 @@ body {
 	z-index: 1000;
 }
 #toolsMenu {
-	/*
-	height: 100%;
-	width: 360px;
-	border: 1px solid black;
-	display: flex;
-	flex-wrap:wrap;
-	*/
 }
 #sizeMenu {
-	/*
-	height: 100%;
-	width: 60px;
-	border: 1px solid black;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	*/
 }
 
 .toolButton {
-	/*border: 1px solid black;*/
 	height: 50px;
 	width: 50px;
 	display: flex;
@@ -72,7 +56,6 @@ body {
 }
 .showSize {
 	font-size: 3px;
-	/*border: 1px solid black;*/
 	height: 50px;
 	width: 50px;
 	display: flex;
@@ -85,8 +68,6 @@ body {
 	align-items: center;
 }
 .sizeSlider{
-	/*display: flex;*/
-	/*justify-content: center;*/
 	margin-left: 10px;
 	align-items: center;
 	float: left;
@@ -101,15 +82,6 @@ body {
 	width: 50px;
 }
 #colorPalette {
-	/*
-	height: 100%;
-	width: 50px;
-	border: 1px solid black;
-	display: flex;
-	flex-wrap:wrap;
-	flex-direction: column;
-	align-items: center;
-	*/
 }
 .colorButton {
 	width: 100%;
@@ -157,13 +129,7 @@ canvas {
 .undo, .redo {
 	height: 50px;
 	width: 50px;
-	/*border: 1px solid black;*/
 }
-/*
-.undo:hover, .redo:hover {
-	background: rgb(152,152,152);
-}
-*/
 
 @media (max-width:991px){
 	.mobileAdminMenu{
