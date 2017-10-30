@@ -159,10 +159,17 @@ canvas {
 
 @media (max-width:991px){
 .mobileAdminMenu{
-	display: fixed;
+	top: 0;
+	display: block;
+	position: fixed;
+}
+.mobileAdminIcons{
+	display: flex;
 	justify-content: center;
 }
-
+.mobileAdminIcons .toolButton{
+	margin: 0 20px;
+}
 .bigToolButton{
 	height: 50px;
 	width: 50px;
