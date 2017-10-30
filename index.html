@@ -9,31 +9,110 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles/main.css">
+
 	</head>
+
 	<body>
 		
+<<<<<<< HEAD
 		<canvas id="canvas-real" class="canvas" width='800px' height='600px'></canvas>
 		<canvas id="canvas-draft" class="canvas" width='800px' height='600px'></canvas>
 		<input id="textInput" name="inputField" value=""></input>
+=======
+		<!--Menu section-->
+		<div id="menu">
+			<!--Tools Menu-->
+			<div id="toolsMenu">
+				<div class="toolButton pencilButton active"><img src="images/pencil.png"></div>
+				<div class="toolButton eraserButton"><img src="images/eraser.png"></div>
+				<div class="toolButton lineButton"><img src="images/line.png"></div>
+				<div class="toolButton rectangleButton"><img src="images/rectangle.png"></div>
+				<div class="toolButton circleButton"><img src="images/circle.png"></div>
+				<div class="toolButton quadraticCurveButton"><img src="images/curve.png"></div>
+				<div class="toolButton polygonButton"><img src="images/polygon.png"></div>
+				<div class="toolButton clearButton"><img src="images/clear.png"></div>
+
+				<div class="toolButton findColorButton"><img src="images/colordropper.png"></div>
+
+				<div class="toolButton textButton"><i class="fa fa-font fa-2x"></i></div>
+				<div class="undo"><img src="images/undo.png"></div>
+				<div class="paste"><img src="images/redo.png"></div>
+				<div><a id="download"><img src="images/download.png"></a></div>
+				
+			</div>
+			<!--Tool Size Menu--> 
+			<div id="sizeMenu">
+				<div class="showSize"><div class="sizeImage"></div></div>
+				<div class="sizeSlider"><input type="range" min="1" max="50" value="5" class="slider" id="brushSize"></div>
+			</div>
+
+			
+			<!--Color Menu-->
+			Stroke
+			<input class="colorButton" id="colorStroke" type="color" name="colorStroke" value="#00ff00">
+			Fill
+			<input class="colorButton" id="colorFill" type="color" name="colorFill" value="#ff8000">
+			<div id="colorPaletteActive">
+				<div class="showActiveColor strokeColor hex000000 activeColor">Stroke</div>
+				<div class="showActiveColor fillColor hexffffff">Fill</div>
+			</div>
+			<div id="colorPalette">
+				<div class="colorButton hex000000"></div>
+				<div class="colorButton hexffffff"></div>
+				<div class="colorButton hexff0000"></div>
+				<div class="colorButton hex00ff00"></div>
+				<div class="colorButton hex0000ff"></div>
+				<div class="colorButton hexffff00"></div>
+				<div class="colorButton hex00ffff"></div>
+				<div class="colorButton hexff00ff"></div>
+				<div class="colorButton hexc0c0c0"></div>
+				<div class="colorButton hex808080"></div>
+				<div class="colorButton hex800000"></div>
+				<div class="colorButton hex808000"></div>
+			</div>
+		</div>
+		<!--Canvas section-->
+		<div id="canvasContainer">
+			<canvas id="canvas-real" class="canvas" width='600px' height='400px'></canvas>
+			<canvas id="canvas-draft" class="canvas" width='1000px' height='800px'></canvas>
+		</div>
+
+>>>>>>> 5a99e2b29b4551f65ecfed23fc3e57f6e915507f
         <!--Javascript Libraries-->
 		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         
-        <!--Scripts-->
-		<script src="scripts/canvas-common.js"></script>
+		<!--Scripts-->
+		<!--Mother Script-->
+		<script src="scripts/canvas-common.js"></script> 
+		<script src="scripts/undo.js"></script>
+		<!--Functions Scripts-->
 		<script src="scripts/drawing-line.js"></script>
 		<script src="scripts/drawing-rectangle.js"></script>
 		<script src="scripts/drawing-circle.js"></script>
+		<script src="scripts/drawing-freehand.js"></script>
+		<script src="scripts/drawing-eraser.js"></script>
 		<script src="scripts/drawing-quadraticCurve.js"></script>
 		<script src="scripts/drawing-polygon.js"></script>
 		<script src="scripts/drawing-text.js"></script>
 
+		<script src="scripts/find-color.js"></script>
+
+		<script src="scripts/drawing-clear.js"></script>
+		<!--Control Scripts-->
+		<script src="scripts/change-tool.js"></script> <!--Change Tools Script-->
+		<script src="scripts/change-color.js"></script> <!--Change Color Script-->
+		<script src="scripts/canvas-save.js"></script>
 
 		<script type='text/javascript'>    
 			// Switch based on User input, for example like clicking a button or something else. We will talk about this part in the section after this one. 
+<<<<<<< HEAD
 			// currentFunction = new DrawingLine(contextReal,contextDraft);
 			currentFunction = new DrawingText(contextReal,contextDraft);
+=======
+			currentFunction = new DrawingCircle(contextReal,contextDraft);
+>>>>>>> 5a99e2b29b4551f65ecfed23fc3e57f6e915507f
 		</script>
 	</body>
 </html>
