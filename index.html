@@ -18,26 +18,35 @@
 		<div id="menu">
 			<!--Tools Menu-->
 			<div id="toolsMenu">
-				<div class="toolButton pencilButton active"><i class="fa fa-pencil fa-2x"></i></div>
-				<div class="toolButton eraserButton"><i class="fa fa-eraser fa-2x"></i></div>
-				<div class="toolButton lineButton">line</div>
-				<div class="toolButton rectangleButton"><i class="fa fa-square-o fa-2x"></i></div>
-				<div class="toolButton circleButton"><i class="fa fa-circle-o fa-2x"></i></div>
-				<div class="toolButton quadraticCurveButton">Curve</div>
-				<div class="toolButton polygonButton">Polygon</div>
-				<div class="toolButton clearButton">Clear</div>
+				<div class="toolButton pencilButton active"><img src="images/pencil.png"></div>
+				<div class="toolButton eraserButton"><img src="images/eraser.png"></div>
+				<div class="toolButton lineButton"><img src="images/line.png"></div>
+				<div class="toolButton rectangleButton"><img src="images/rectangle.png"></div>
+				<div class="toolButton circleButton"><img src="images/circle.png"></div>
+				<div class="toolButton quadraticCurveButton"><img src="images/curve.png"></div>
+				<div class="toolButton polygonButton"><img src="images/polygon.png"></div>
+				<div class="toolButton clearButton"><img src="images/clear.png"></div>
+
+				<div class="toolButton findColorButton"><img src="images/colordropper.png"></div>
 
 				<div class="toolButton textButton"><i class="fa fa-font fa-2x"></i></div>
-
+				<div class="undo"><img src="images/undo.png"></div>
+				<div class="paste"><img src="images/redo.png"></div>
+				<div><a id="download"><img src="images/download.png"></a></div>
 				
 			</div>
 			<!--Tool Size Menu--> 
 			<div id="sizeMenu">
 				<div class="showSize"><div class="sizeImage"></div></div>
-				<div class="sizeSlider"><input type="range" min="1" max="50" value="3" class="slider" id="myRange"></div>
+				<div class="sizeSlider"><input type="range" min="1" max="50" value="5" class="slider" id="brushSize"></div>
 			</div>
+
 			
 			<!--Color Menu-->
+			Stroke
+			<input class="colorButton" id="colorStroke" type="color" name="colorStroke" value="#00ff00">
+			Fill
+			<input class="colorButton" id="colorFill" type="color" name="colorFill" value="#ff8000">
 			<div id="colorPaletteActive">
 				<div class="showActiveColor strokeColor hex000000 activeColor">Stroke</div>
 				<div class="showActiveColor fillColor hexffffff">Fill</div>
@@ -91,7 +100,7 @@
 
 		<script type='text/javascript'>    
 			// Switch based on User input, for example like clicking a button or something else. We will talk about this part in the section after this one. 
-			currentFunction = new DrawingClear(contextReal,contextDraft);
+			currentFunction = new DrawingCircle(contextReal,contextDraft);
 		</script>
 	</body>
 </html>
