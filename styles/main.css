@@ -10,6 +10,13 @@ body {
 
 
 /*Menu styles*/
+.mobileAdminMenu{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	display: none;
+	float: left;
+}
 #menu {
 	position: relative;
 	height: auto;
@@ -39,7 +46,6 @@ body {
 	display: flex;
 	flex-wrap:wrap;
 }
-
 .toolButton {
 	/*border: 1px solid black;*/
 	height: 50px;
@@ -58,7 +64,6 @@ body {
 	border: 1px solid rgb(23,98,161);
 	border-radius: 10px;
 }
-
 .bigToolButton{
 	height: 150px;
 	width: 80px;
@@ -67,7 +72,6 @@ body {
 	align-items: center;
 	float: left
 }
-
 .showActiveColor {
 	border: 1px solid black;
 	height: 50px;
@@ -80,7 +84,7 @@ body {
 }
 .showSize {
 	font-size: 3px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	height: 50px;
 	width: 50px;
 	display: flex;
@@ -88,12 +92,10 @@ body {
 	align-items: center;
 	float: left;
 }
-
 .flexRow{
 	display: flex;
 	align-items: center;
 }
-
 .sizeSlider{
 	/*display: flex;*/
 	/*justify-content: center;*/
@@ -155,3 +157,29 @@ canvas {
 	border: 1px solid red;
 }
 
+@media (max-width:991px){
+.mobileAdminMenu{
+	display: fixed;
+	justify-content: center;
+}
+
+.bigToolButton{
+	height: 50px;
+	width: 50px;
+}
+#menu{
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+}
+
+.adminContainer{
+	display: none;
+}
+
+.fontColorContainer{
+	display: none;
+}
+
+
+}
