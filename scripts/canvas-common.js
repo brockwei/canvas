@@ -48,4 +48,34 @@ class PaintFunction{
     onMouseUp(){}
     onMouseLeave(){}
     onMouseEnter(){}
+    //Update
+    onFinish(){}
 }    
+/*
+//Hammertime
+var hammertime = new Hammer(canvasDraft);
+hammertime.on('drag swipe tap press', function(ev) {
+console.log(ev.type);
+});
+
+hammertime.on('panstart',function(ev){
+    let mouseX = ev.center.x - canvasDraft.offsetLeft;
+    let mouseY = ev.center.y - canvasDraft.offsetTop;
+    currentFunction.onMouseDown([mouseX,mouseY],ev);
+    dragging = true;
+})
+hammertime.on('panmove',function(ev){
+    let mouseX = ev.center.x - canvasDraft.offsetLeft;
+    let mouseY = ev.center.y - canvasDraft.offsetTop;
+    currentFunction.onDragging([mouseX,mouseY],ev);
+   // currentFunction.onMouseMove([mouseX,mouseY],ev);
+   console.log("panmove");
+});
+hammertime.on('panend',function(ev){
+    let mouseX = ev.center.x - canvasDraft.offsetLeft;
+    let mouseY = ev.center.y - canvasDraft.offsetTop;
+    currentFunction.onMouseUp([mouseX,mouseY],ev);
+    console.log("panend");
+   
+});
+*/

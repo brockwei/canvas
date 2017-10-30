@@ -6,17 +6,16 @@ class DrawingRectangle extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.contextReal.strokeStyle = "balck";//border color
-        this.contextReal.fillStyle = "#f44";//fill color
-        this.contextReal.lineWidth = "5";//border width
+        this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
+        this.contextReal.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
+        this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.origX = coord[0];
         this.origY = coord[1];
-        
     }
     onDragging(coord,event){
-        this.contextDraft.strokeStyle = "black";//border color        
-        this.contextDraft.fillStyle = "#f44";//fill color
-        this.contextDraft.lineWidth = "5";//border width
+        this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
+        this.contextDraft.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
+        this.contextDraft.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.beginPath();
         this.contextDraft.fillRect(this.origX,this.origY,coord[0]- this.origX,coord[1] - this.origY);        
@@ -25,7 +24,6 @@ class DrawingRectangle extends PaintFunction{
         this.contextDraft.stroke();
         this.contextDraft.closePath();
     }
-
     onMouseMove(){}
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
@@ -34,7 +32,13 @@ class DrawingRectangle extends PaintFunction{
         this.contextReal.fill();
         this.contextReal.stroke();
         this.contextReal.closePath();
+        this.onFinish();
     }
     onMouseLeave(){}
     onMouseEnter(){}
+    onFinish(){
+        canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
+        canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
+        canvasSettings.undoObject.actionCount++;
+    }
 }

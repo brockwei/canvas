@@ -13,12 +13,7 @@
 	</head>
 
 	<body>
-		
-<<<<<<< HEAD
-		<canvas id="canvas-real" class="canvas" width='800px' height='600px'></canvas>
-		<canvas id="canvas-draft" class="canvas" width='800px' height='600px'></canvas>
-		<input id="textInput" name="inputField" value=""></input>
-=======
+
 		<!--Menu section-->
 		<div id="menu">
 			<!--Tools Menu-->
@@ -31,14 +26,13 @@
 				<div class="toolButton quadraticCurveButton"><img src="images/curve.png"></div>
 				<div class="toolButton polygonButton"><img src="images/polygon.png"></div>
 				<div class="toolButton clearButton"><img src="images/clear.png"></div>
-
 				<div class="toolButton findColorButton"><img src="images/colordropper.png"></div>
 
-				<div class="toolButton textButton"><i class="fa fa-font fa-2x"></i></div>
+				<div class="toolButton textButton"><img src="images/text.png"></div>
 				<div class="undo"><img src="images/undo.png"></div>
-				<div class="paste"><img src="images/redo.png"></div>
+				<div class="redo"><img src="images/redo.png"></div>
 				<div><a id="download"><img src="images/download.png"></a></div>
-				
+					
 			</div>
 			<!--Tool Size Menu--> 
 			<div id="sizeMenu">
@@ -48,45 +42,31 @@
 
 			
 			<!--Color Menu-->
-			Stroke
-			<input class="colorButton" id="colorStroke" type="color" name="colorStroke" value="#00ff00">
-			Fill
-			<input class="colorButton" id="colorFill" type="color" name="colorFill" value="#ff8000">
-			<div id="colorPaletteActive">
-				<div class="showActiveColor strokeColor hex000000 activeColor">Stroke</div>
-				<div class="showActiveColor fillColor hexffffff">Fill</div>
-			</div>
 			<div id="colorPalette">
-				<div class="colorButton hex000000"></div>
-				<div class="colorButton hexffffff"></div>
-				<div class="colorButton hexff0000"></div>
-				<div class="colorButton hex00ff00"></div>
-				<div class="colorButton hex0000ff"></div>
-				<div class="colorButton hexffff00"></div>
-				<div class="colorButton hex00ffff"></div>
-				<div class="colorButton hexff00ff"></div>
-				<div class="colorButton hexc0c0c0"></div>
-				<div class="colorButton hex808080"></div>
-				<div class="colorButton hex800000"></div>
-				<div class="colorButton hex808000"></div>
+				Stroke
+				<input class="colorButton" id="colorStroke" type="color" name="colorStroke" value="#00ff00">
+				Fill
+				<input class="colorButton" id="colorFill" type="color" name="colorFill" value="#ff8000">
 			</div>
 		</div>
 		<!--Canvas section-->
 		<div id="canvasContainer">
 			<canvas id="canvas-real" class="canvas" width='600px' height='400px'></canvas>
 			<canvas id="canvas-draft" class="canvas" width='1000px' height='800px'></canvas>
+			<input id="textInput" name="inputField" value=""></input>
 		</div>
 
->>>>>>> 5a99e2b29b4551f65ecfed23fc3e57f6e915507f
         <!--Javascript Libraries-->
 		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-		<!--Scripts-->
+		<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+		
+		<!--Canvas Scripts-->
 		<!--Mother Script-->
 		<script src="scripts/canvas-common.js"></script> 
 		<script src="scripts/undo.js"></script>
+
 		<!--Functions Scripts-->
 		<script src="scripts/drawing-line.js"></script>
 		<script src="scripts/drawing-rectangle.js"></script>
@@ -96,23 +76,16 @@
 		<script src="scripts/drawing-quadraticCurve.js"></script>
 		<script src="scripts/drawing-polygon.js"></script>
 		<script src="scripts/drawing-text.js"></script>
-
 		<script src="scripts/find-color.js"></script>
-
 		<script src="scripts/drawing-clear.js"></script>
-		<!--Control Scripts-->
-		<script src="scripts/change-tool.js"></script> <!--Change Tools Script-->
-		<script src="scripts/change-color.js"></script> <!--Change Color Script-->
-		<script src="scripts/canvas-save.js"></script>
 
+		<!--Control Scripts-->
+		<script src="scripts/canvas-configuration.js"></script> <!--Testing this script-->
+		<script src="scripts/canvas-save.js"></script>
+		
 		<script type='text/javascript'>    
 			// Switch based on User input, for example like clicking a button or something else. We will talk about this part in the section after this one. 
-<<<<<<< HEAD
-			// currentFunction = new DrawingLine(contextReal,contextDraft);
-			currentFunction = new DrawingText(contextReal,contextDraft);
-=======
-			currentFunction = new DrawingCircle(contextReal,contextDraft);
->>>>>>> 5a99e2b29b4551f65ecfed23fc3e57f6e915507f
+			currentFunction = new DrawingFreehand(contextReal,contextDraft);
 		</script>
 	</body>
 </html>

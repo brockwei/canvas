@@ -7,11 +7,12 @@ class DrawingPolygon extends PaintFunction{
     }
 
     onMouseDown(coord,event){
-        this.contextReal.strokeStyle = "#df4b26";//line color
-        this.contextDraft.strokeStyle = "#df4b26";//line color
+        this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
+        this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.lineCap = "round";
-        this.contextReal.lineWidth = 5;//line width
-        this.contextDraft.lineWidth = 5;//line width
+        this.contextDraft.lineCap = "round";
+        this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
+        this.contextDraft.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.origX = coord[0];
         this.origY = coord[1];
         
@@ -31,6 +32,7 @@ class DrawingPolygon extends PaintFunction{
                 this.contextReal.lineTo(this.firstOrigX,this.firstOrigY);
                 this.contextReal.stroke();
                 this.actionCount = 0;
+                this.onFinish();//Stores undo state
             } 
             //if the end point is more than 20px away from the original starting point, we continue draw lines
             else {
@@ -53,6 +55,11 @@ class DrawingPolygon extends PaintFunction{
             this.contextDraft.lineTo(coord[0],coord[1]);
             this.contextDraft.stroke();
         }
+    }
+    onFinish(){
+        canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
+        canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
+        canvasSettings.undoObject.actionCount++;
     }
 
 }
