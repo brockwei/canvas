@@ -29,6 +29,6 @@ function downloadCanvas(link, canvasId, filename) {
     }
     
     document.getElementById('download').addEventListener('click', function() {
-        downloadCanvas(this, 'canvas-real', 'test.png');
+        downloadCanvas(this, 'canvas-real', 'image.png');
     }, false);
     
