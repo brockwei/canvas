@@ -6,40 +6,6 @@ let contextDraft = canvasDraft.getContext('2d');
 let currentFunction;  //This variable will allow us to change paint function, ie change to draw line, draw square
 let dragging = false;
 
-
-$('#canvas-draft').mousedown(function(e){
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseDown([mouseX,mouseY],e);
-    dragging = true;
-});
-$('#canvas-draft').mousemove(function(e){
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    if(dragging){
-        currentFunction.onDragging([mouseX,mouseY],e);
-    }
-    currentFunction.onMouseMove([mouseX,mouseY],e);
-});
-$('#canvas-draft').mouseup(function(e){
-    dragging = false;
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseUp([mouseX,mouseY],e);
-});
-$('#canvas-draft').mouseleave(function(e){
-    dragging = false;
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseLeave([mouseX,mouseY],e);
-});
-
-$('#canvas-draft').mouseenter(function(e){
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseEnter([mouseX,mouseY],e);
-});
-
 class PaintFunction{
     constructor(){}
     onMouseDown(){}
@@ -52,7 +18,8 @@ class PaintFunction{
     onFinish(){}
 }    
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || $(window).width()<768) {
     var hammertime = new Hammer(canvasDraft);
     hammertime.on('drag swipe tap press', function(ev) {
     console.log(ev.type);
@@ -77,5 +44,43 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
         currentFunction.onMouseUp([mouseX,mouseY],ev);
         console.log("panend");
        
+    });
+}
+
+else if ($(window).width()>767){
+    $('#canvas-draft').mousedown(function(e){
+        let mouseX = e.pageX - this.offsetLeft;
+        let mouseY = e.pageY - this.offsetTop;
+        
+        currentFunction.onMouseDown([mouseX,mouseY],e);
+        dragging = true;
+    });
+    $('#canvas-draft').mousemove(function(e){
+        let mouseX = e.pageX - this.offsetLeft;
+        let mouseY = e.pageY - this.offsetTop;
+        if(dragging){
+            currentFunction.onDragging([mouseX,mouseY],e);
+        }
+        currentFunction.onMouseMove([mouseX,mouseY],e);
+    });
+    $('#canvas-draft').mouseup(function(e){
+        dragging = false;
+        let mouseX = e.pageX - this.offsetLeft;
+        let mouseY = e.pageY - this.offsetTop;
+        currentFunction.onMouseUp([mouseX,mouseY],e);
+    });
+    $('#canvas-draft').mouseleave(function(e){
+       // dragging = false;
+        let mouseX = e.pageX - this.offsetLeft;
+        let mouseY = e.pageY - this.offsetTop;
+        currentFunction.onMouseLeave([mouseX,mouseY],e);
+    });
+    
+    $('#canvas-draft').mouseenter(function(e){
+        //if(dragging == true){
+            let mouseX = e.pageX - this.offsetLeft;
+            let mouseY = e.pageY - this.offsetTop;
+            currentFunction.onMouseEnter([mouseX,mouseY],e);
+        //}
     });
 }
