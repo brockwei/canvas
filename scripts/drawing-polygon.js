@@ -7,6 +7,7 @@ class DrawingPolygon extends PaintFunction{
     }
 
     onMouseDown(coord,event){
+        this.clearText(this.contextReal);//For text box bug(MF)
         dragging = false;
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
@@ -58,6 +59,14 @@ class DrawingPolygon extends PaintFunction{
             this.contextDraft.stroke();
         }
     }
+
+    clearText(){
+        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
+        $('#textInput').val('');
+        this.textX= [];
+        this.textY = [];
+    }
+
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
