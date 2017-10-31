@@ -203,8 +203,8 @@ canvas {
 	position: absolute;
 }
 #canvasContainer {
-	min-height: 100%;
-	min-width: 100%;
+	min-height: 200%;
+	min-width: 200%;
 	overflow: hidden;
 	-webkit-touch-callout:none;
 	-webkit-user-select:none;

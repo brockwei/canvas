@@ -13,8 +13,8 @@ This is a browser-based canvas project based on the windows program paint.
  - Hammer.js
 
 ## Contributors
- - [Brock Wei](brockwei.github.io) 
- - [Midori Funaki](midori-funaki.github.io)
+ - [Brock Wei](https://brockwei.github.io) 
+ - [Midori Funaki](https://midori-funaki.github.io)
  - [Wey Feng Ong](https://github.com/weyfengaccelerate)
 
 ## Acknowledgements
