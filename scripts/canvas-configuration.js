@@ -1,8 +1,8 @@
 var canvasSettings = {
-    //Default Settings
-    colorStroke: $("#colorStroke").val(),
-    colorFill: $("#colorFill").val(),
-    brushSize: $('#brushSize').val(),
+    //Tool Settings
+    colorStroke: $("#colorStroke").val(), //Default stroke color
+    colorFill: $("#colorFill").val(), //Default fill color
+    brushSize: $('#brushSize').val(), //Default brush size
     //Functions
     pencilButton: DrawingFreehand,
     lineButton: DrawingLine,

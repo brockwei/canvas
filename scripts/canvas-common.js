@@ -75,6 +75,7 @@ hammertime.on('panend',function(ev){
     let mouseX = ev.center.x - canvasDraft.offsetLeft;
     let mouseY = ev.center.y - canvasDraft.offsetTop;
     currentFunction.onMouseUp([mouseX,mouseY],ev);
+    dragging = false;
     console.log("panend");
    
 });
