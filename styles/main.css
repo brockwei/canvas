@@ -133,6 +133,10 @@ canvas {
 	width: 50px;
 }
 
+#openFile{
+	display: none;
+}
+
 @media (max-width:991px){
 	.mobileAdminMenu{
 		top: 0;

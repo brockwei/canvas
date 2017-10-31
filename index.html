@@ -68,6 +68,10 @@
 							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
 								<div class="toolButton textButton"><i class="fa fa-font fa-2x"></i></div>
 							</div>
+							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+								<i class="fa fa-file-image-o fa-2x open"></i>
+								<input id="openFile"  type="file" name="pic" accept="image/*"></input>
+							</div>
 						</div>
 					</div>
 					<!-- Font Width, Border Color, Fill Color -->
@@ -121,6 +125,7 @@
 		<script src="scripts/drawing-text.js"></script>
 		<script src="scripts/find-color.js"></script>
 		<script src="scripts/drawing-clear.js"></script>
+		<script src="scripts/open-file.js"></script>
 
 		<!--Control Scripts-->
 		<script src="scripts/canvas-configuration.js"></script> <!--Testing this script-->
@@ -128,7 +133,7 @@
 		
 		<script type='text/javascript'>    
 			// Switch based on User input, for example like clicking a button or something else. We will talk about this part in the section after this one. 
-			currentFunction = new DrawingFreehand(contextReal,contextDraft);
+			currentFunction = new DrawingLine(contextReal,contextDraft);
 		</script>
 	</body>
 </html>
