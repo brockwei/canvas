@@ -50,6 +50,8 @@ $('body').on("click",".toolButton", function(){
     /*Highlight button*/
     $('.toolButton').removeClass("active");
     $(this).addClass("active");
+    //User experience for Mobile:
+    $('.toolsDropdownButton').html($('.active').html());
 });
 //Clear text
 canvasSettings.clearText = function(){
