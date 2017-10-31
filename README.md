@@ -18,4 +18,5 @@ This is a browser-based canvas project based on the windows program paint.
  - [Wey Feng Ong](https://github.com/weyfengaccelerate)
 
 ## Acknowledgements
- - [Gordon Lau](https://github.com/gordonlau) 
+ - [Gordon Lau](https://github.com/gordonlau) - For his support in this project
+ - [Icons8](https://icons8.com/) - For the canvas icons
