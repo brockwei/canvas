@@ -7,6 +7,7 @@ class DrawingQuadraticCurve extends PaintFunction{
     }
 
         onMouseDown(coord,event){
+            this.clearText(this.contextReal);//For text box bug(MF)
             if (this.actionCounter === 0){
                 this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
                 this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
@@ -50,6 +51,14 @@ class DrawingQuadraticCurve extends PaintFunction{
                 this.onFinish();
             }
         }
+
+        clearText(){
+            $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
+            $('#textInput').val('');
+            this.textX= [];
+            this.textY = [];
+        }
+        
         onFinish(){
             canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
             canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();

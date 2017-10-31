@@ -23,15 +23,14 @@ class DrawingText extends PaintFunction{
         $('#textInput').css({"display":"block","transform":"translateY("+coord[1]+"px) translateX("+coord[0]+"px)","font-size":this.fontSize,"color":this.fillStyle,"font-family":this.fontStyle,"font-weight":this.fontWeight,"padding":"0"});
         //If user click outside the input box, text will be printed on the canvas real
         if ((this.textX.length > 1) && (event.target.id != $('#textInput'))){
-            this.outputText(this.contextReal);
+            let inputText = $('#textInput').val();
+            contextReal.fillText(inputText,this.textX[0],this.textY[0]+this.fontSize);
+            this.clearText();
         }
     }
 
-    //Print the text on the caval real
-    outputText(ctx){
-        let inputText = $('#textInput').val();
-        contextReal.fillText(inputText,this.textX[0],this.textY[0]+this.fontSize);
-        //contextReal.stroke();
+    //Remove the text input box
+    clearText(){
         $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
         $('#textInput').val('');
         this.textX= [];

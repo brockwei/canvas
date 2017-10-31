@@ -58,6 +58,13 @@ hammertime.on('drag swipe tap press', function(ev) {
 console.log(ev.type);
 });
 
+hammertime.on('tap',function(ev){
+    let mouseX = ev.center.x - canvasDraft.offsetLeft;
+    let mouseY = ev.center.y - canvasDraft.offsetTop;
+    currentFunction.onMouseDown([mouseX,mouseY],ev);
+    dragging = false;
+})
+
 hammertime.on('panstart',function(ev){
     let mouseX = ev.center.x - canvasDraft.offsetLeft;
     let mouseY = ev.center.y - canvasDraft.offsetTop;

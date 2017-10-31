@@ -7,6 +7,8 @@ class DrawingPolygon extends PaintFunction{
     }
 
     onMouseDown(coord,event){
+        this.clearText(this.contextReal);//For text box bug(MF)
+        dragging = false;
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.lineCap = "round";
@@ -26,27 +28,28 @@ class DrawingPolygon extends PaintFunction{
         } 
         //action for the Second or Later click
         else if (this.actionCount === 1){
-            //if the end point is 20px away from the original starting point, we complete the polygon
-            if (Math.pow((this.firstOrigX - coord[0]),2)<400 && Math.pow((this.firstOrigY - coord[1]),2)<400){
-                this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
-                this.contextReal.lineTo(this.firstOrigX,this.firstOrigY);
-                this.contextReal.stroke();
-                this.actionCount = 0;
-                this.onFinish();//Stores undo state
-            } 
-            //if the end point is more than 20px away from the original starting point, we continue draw lines
-            else {
-                this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
-                this.contextReal.lineTo(coord[0],coord[1]);
-                this.contextReal.stroke();
-                //this.contextReal.beginPath();
-                this.contextReal.moveTo(this.origX,this.origY);
-            }
+            this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+            this.contextReal.lineTo(coord[0],coord[1]);
+            this.contextReal.stroke();
+            this.contextReal.moveTo(this.origX,this.origY);
+        }
+    }
+
+    onMouseUp(coord,event){
+        //if the end point is 20px away from the original starting point, we complete the polygon
+        dragging = false;
+        if ((this.actionCount === 1) && (Math.pow((this.firstOrigX - coord[0]),2)<400 && Math.pow((this.firstOrigY - coord[1]),2)<400)){
+            this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
+            this.contextReal.lineTo(this.firstOrigX,this.firstOrigY);
+            this.contextReal.stroke();
+            this.actionCount = 0;
+            this.onFinish();//Stores undo state
         }
     }
 
     //shows the draft line
-    onMouseMove(coord,event){
+    onDragging(coord,event){
+        dragging = true;
         if (this.actionCount === 1){
             this.contextDraft.closePath();
             this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
@@ -56,6 +59,14 @@ class DrawingPolygon extends PaintFunction{
             this.contextDraft.stroke();
         }
     }
+
+    clearText(){
+        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
+        $('#textInput').val('');
+        this.textX= [];
+        this.textY = [];
+    }
+
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
