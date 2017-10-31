@@ -1,4 +1,4 @@
-/*Global styles*/
+/*-------------------Global styles-------------------*/
 html, body {
 	height: 100%;
 	margin:0;
@@ -7,162 +7,274 @@ body {
 	background: rgb(152,152,152);
 	overflow: hidden;
 }
-
-/*Menu styles*/
-.mobileAdminMenu{
-	position: fixed;
-	top: 0;
-	width: 100%;
-	display: none;
-	float: left;
+div {
+	box-sizing: border-box;
 }
-#menu {
-	position: relative;
+p {
+	margin: 0;
+	color: rgb(255,255,255);
+	font-family: 'Metrophobic', sans-serif;
+}
+hr {
+	width: 50%;
+	margin: 20px auto;
+	border: 1px solid rgb(200,200,200);
+}
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+
+	background: #ffffff;
+	cursor: pointer;
+	margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+	height: 4px;
+	cursor: pointer;
+	background: rgb(200,200,200);
+	border-radius: 1.3px;
+  }
+
+.img-responsive {
+	display:block;
 	height: auto;
-	border: 1px solid black;
-	background: rgb(231,239,245);
-	display: flex;
-	z-index: 1000;
+	width: 100%;
 }
-#toolsMenu {
+/*-------------------Menu styles-------------------*/
+#menu {
+	position: fixed;
+	width: 114px;
+	height: 100%;
+	border-right: 1px solid black;
+	background: linear-gradient(to right, rgb(35,35,35), rgb(50,50,50));
+	background: -webkit-linear-gradient(to right, rgb(35,35,35), rgb(50,50,50));
+	background: -moz-linear-gradient(to right, rgb(35,35,35), rgb(50,50,50));
+	z-index: 10;
 }
-#sizeMenu {
-}
-
-.toolButton {
+.menuOpen {
+	position: absolute;
+	margin: 5px 0 0 5px;
+	padding: 5px;
+	border-radius: 20%;
+	background: rgb(204,204,204);
 	height: 50px;
 	width: 50px;
+	display: none;
+	z-index: 15;
+}
+/*Inactive toolbar on desktop mode section*/
+.inactive {
+	background: rgb(200,200,200);
+	margin: 5px 0 0 5px;
+	padding: 5px;
+	border-radius: 20%;
+	height: 33px;
+	width: 33px;
+	display: none;
+}
+/*Tools*/
+#toolsMenu {
+	width: 100%;
+	display: flex;
+	flex-wrap:wrap;
+}
+.toolsDropdown {
+	width: 100%;
+	padding-top: 10px;
+	display: flex;
+	flex-wrap:wrap;
+}
+.toolButton {
+	background: rgb(200,200,200);
+	margin: 2px;
+	padding: 5px;
+	border-radius: 20%;
+	height: 33px;
+	width: 33px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.toolButton:hover,
-.bigToolButton:hover {
-	background: white;
-	border: 1px solid rgb(23,98,161);
-	border-radius: 10px;
+.toolButton:hover {
+	background: rgba(255,255,255,1);
+	transition: all 0.2s;
 }
-.toolButton:active,
-.bigToolButton:active {
-	background: white;
-	border: 1px solid rgb(23,98,161);
-	border-radius: 10px;
+.toolButton:active {
+	background: rgba(255,255,255,1);
 }
-.bigToolButton{
-	height: 150px;
-	width: 80px;
+.active {
+	background: rgba(255,255,255,1);
+	border: 1px solid rgb(0,191,255);
+}
+/*Brush Size styles*/
+#sizeMenu {
+	width: 100%;
+	padding: 5px;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	float: left
+}
+#brushSize {
+	width: 50px;
 }
 .showSize {
+	margin-bottom: 10px;
+	border-radius: 20%;
+	background: rgb(204,204,204);
 	font-size: 3px;
-	height: 50px;
-	width: 50px;
+	height: 55px;
+	width: 55px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	float: left;
-}
-.flexRow{
-	display: flex;
-	align-items: center;
-}
-.sizeSlider{
-	margin-left: 10px;
-	align-items: center;
-	float: left;
 }
 .sizeImage {
 	border-radius: 50%;
-	background: black;
-	height: 5px;
-	width: 5px;
+	background: rgb(0,0,0);
+	height: 5px; /*Default values*/
+	width: 5px; /*Default values*/
 }
-.sizeSlider {
-	width: 50px;
-}
+/*Color Palette styles*/
 #colorPalette {
+	margin: 10px auto;
+	padding: 5px;
+	width: 100%;
+	display: flex;
+	flex-wrap:wrap;
+	flex-direction: column;
+	align-items: center;
+}
+#colorStroke,#colorFill {
+	color: transparent !important;
+	outline: none;
+	border: 1px solid rgb(152,152,152);
+	border-radius: 20%;
+}
+#colorStroke:active,#colorFill:active {
+	border: 1px solid rgb(0,192,255);
 }
 .colorButton {
-	width: 100%;
-	height: 25px;
+	width: 33px;
+	height: 33px;
 }
-/*Button*/
-.active {
-	background: white;
-	border: 1px solid rgba(23,98,161,0.5);
-	border-radius: 10px;
+/*Admin Tools styles*/
+#adminFunctions {
+	width: 100%;
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: space-around;
+}
+.adminGroup {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+#undoRedoGroup {
+	display: flex;
+}
+.mobileShow {
+	display: none;
+}
+.btn {
+	border-radius: 20%;
+	padding: 5px;
+	margin: 2px;
+	width: 33px;
+	background: rgb(200,200,200);
+}
+.btn:hover {
+	background: rgba(255,255,255,1);
 	transition: all 0.2s;
 }
-.activeColor {
-	border: 1px solid red;
+.btn:active {
+	background: rgba(255,255,255,1);
 }
 
 #textInput{
 	display: none;
 	position: absolute;
-	z-index: 1010;
+	z-index: 5;
 	background-color: transparent;
 	background-image: none;
 	border: 1px dotted gray;
 }
 
-/*Canvas styles*/
+/*-------------------Canvas styles-------------------*/
 canvas {
 	position: absolute;
 }
 #canvasContainer {
-	margin: 50px auto;
-	box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-	height: 400px;
-	max-width: 600px;
+	min-height: 100%;
+	min-width: 100%;
 	overflow: hidden;
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	touch-action: none;
+	-ms-touch-action:none;
+	user-select:none;
 }
 #canvas-real {
-	border: 1px solid black;
+	background: white;
 }
 #canvas-draft {
-	border: 1px solid red;
 	/*transform: translateX(-200px) translateY(-200px);*/
 }
 
-.undo, .redo {
-	height: 50px;
-	width: 50px;
-}
 
-@media (max-width:991px){
-	.mobileAdminMenu{
-		top: 0;
-		display: block;
-		position: fixed;
-	}
-	.mobileAdminIcons{
+/*Mobile Responsive*/
+@media (max-width:767px){
+	#menu {
+		height: auto;
 		display: flex;
-		justify-content: center;
+		align-items: flex-start;
+		width: auto;
+		background: transparent;
+		border: none;
 	}
-	.mobileAdminIcons .toolButton{
-		margin: 0 20px;
-	}
-	.bigToolButton{
-		height: 50px;
-		width: 50px;
-	}
-	.toolButton,
-	.toolButton img,
-	.toolButton i{
-		height: 30px;
-		width: 30px;
-	}
-	#menu{
-		bottom: 0;
-		position: fixed;
-		width: 100%;
-	}
+	.menuOpen {
 	
-	.adminContainer{
+		display:block;
+	}
+	#menu.mobileHidden {
 		display: none;
+	}
+	.toolsDropdown {
+		width: 150px;
+		border-radius: 5px;
+		position: absolute;
+		padding-top: 0;
+		top: 75px;
+		left: 5px;
+		background: rgba(35,35,35,0.7);
+	}
+	.adminDropdown {
+		position: absolute;
+		border-radius: 5px;
+		top: 75px;
+		background: rgba(35,35,35,0.7);
+	}
+	.sizeSlider {
+		height: 27px;
+		border-radius: 5px;
+		background: rgba(35,35,35,0.7);
+	}
+	#colorPalette {
+		margin: 0;
+		padding: 5px 0 5px 0;
+	}
+	.inactive {
+		display: block;
+		margin-bottom: -4px;
+	}
+	.mobileShow {
+		display: block;
+	}
+	.mobileHidden {
+		display: none;
+	}
+	#undoRedoGroup.mobileHidden {
+		display:none;
 	}
 }

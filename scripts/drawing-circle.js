@@ -4,9 +4,7 @@ class DrawingCircle extends PaintFunction{
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;           
     }
-    
     onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
         this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
@@ -41,15 +39,6 @@ class DrawingCircle extends PaintFunction{
     }
     onMouseLeave(){}
     onMouseEnter(){}
-
-    //Remove the text input box for text box bug(MF)
-    clearText(){
-        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
-        $('#textInput').val('');
-        this.textX= [];
-        this.textY = [];
-    }
-
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();

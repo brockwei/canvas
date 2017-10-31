@@ -6,7 +6,7 @@ let contextDraft = canvasDraft.getContext('2d');
 let currentFunction;  //This variable will allow us to change paint function, ie change to draw line, draw square
 let dragging = false;
 
-/*
+
 $('#canvas-draft').mousedown(function(e){
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
@@ -38,7 +38,7 @@ $('#canvas-draft').mouseenter(function(e){
     let mouseX = e.pageX - this.offsetLeft;
     let mouseY = e.pageY - this.offsetTop;
     currentFunction.onMouseEnter([mouseX,mouseY],e);
-});*/
+});
 
 class PaintFunction{
     constructor(){}
@@ -52,38 +52,30 @@ class PaintFunction{
     onFinish(){}
 }    
 
-//Hammertime
-var hammertime = new Hammer(canvasDraft);
-hammertime.on('drag swipe tap press', function(ev) {
-console.log(ev.type);
-});
-
-hammertime.on('tap',function(ev){
-    let mouseX = ev.center.x - canvasDraft.offsetLeft;
-    let mouseY = ev.center.y - canvasDraft.offsetTop;
-    currentFunction.onMouseDown([mouseX,mouseY],ev);
-    dragging = false;
-})
-
-hammertime.on('panstart',function(ev){
-    let mouseX = ev.center.x - canvasDraft.offsetLeft;
-    let mouseY = ev.center.y - canvasDraft.offsetTop;
-    currentFunction.onMouseDown([mouseX,mouseY],ev);
-    dragging = true;
-})
-hammertime.on('panmove',function(ev){
-    let mouseX = ev.center.x - canvasDraft.offsetLeft;
-    let mouseY = ev.center.y - canvasDraft.offsetTop;
-    currentFunction.onDragging([mouseX,mouseY],ev);
-   // currentFunction.onMouseMove([mouseX,mouseY],ev);
-   console.log("panmove");
-});
-hammertime.on('panend',function(ev){
-    let mouseX = ev.center.x - canvasDraft.offsetLeft;
-    let mouseY = ev.center.y - canvasDraft.offsetTop;
-    currentFunction.onMouseUp([mouseX,mouseY],ev);
-    dragging = false;
-    console.log("panend");
-   
-});
-
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var hammertime = new Hammer(canvasDraft);
+    hammertime.on('drag swipe tap press', function(ev) {
+    console.log(ev.type);
+    });
+    hammertime.on('panstart',function(ev){
+        let mouseX = ev.center.x - canvasDraft.offsetLeft;
+        let mouseY = ev.center.y - canvasDraft.offsetTop;
+        currentFunction.onMouseDown([mouseX,mouseY],ev);
+        dragging = true;
+        console.log(mouseX+":"+mouseY + ":"+ev.center.x + ","+ev.center.y);
+    })
+    hammertime.on('panmove',function(ev){
+        let mouseX = ev.center.x - canvasDraft.offsetLeft;
+        let mouseY = ev.center.y - canvasDraft.offsetTop;
+        currentFunction.onDragging([mouseX,mouseY],ev);
+       // currentFunction.onMouseMove([mouseX,mouseY],ev);
+       console.log("panmove");
+    });
+    hammertime.on('panend',function(ev){
+        let mouseX = ev.center.x - canvasDraft.offsetLeft;
+        let mouseY = ev.center.y - canvasDraft.offsetTop;
+        currentFunction.onMouseUp([mouseX,mouseY],ev);
+        console.log("panend");
+       
+    });
+}

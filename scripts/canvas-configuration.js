@@ -1,19 +1,27 @@
 var canvasSettings = {
-    //Tool Settings
-    colorStroke: $("#colorStroke").val(), //Default stroke color
-    colorFill: $("#colorFill").val(), //Default fill color
-    brushSize: $('#brushSize').val(), //Default brush size
-    //Functions
+    //Default Settings
+    colorStroke: $("#colorStroke").val(),
+    colorFill: $("#colorFill").val(),
+    brushSize: $('#brushSize').val(),
+    //Setting Functions
+    changeStroke: function(jscolor){canvasSettings.colorStroke = "#"+jscolor;},
+    changeFill: function(jscolor){canvasSettings.colorFill = "#"+jscolor;},
+    //Tool Functions
     pencilButton: DrawingFreehand,
     lineButton: DrawingLine,
     rectangleButton: DrawingRectangle,
     circleButton: DrawingCircle,
     eraserButton: DrawingEraser,
-    clearButton: DrawingClear,
+        //clearButton: DrawingClear,
     quadraticCurveButton: DrawingQuadraticCurve,
     polygonButton: DrawingPolygon,
     findColorButton: FindColor,
     textButton: DrawingText,
+    //Admin Functions 
+    downloadCanvas : function(){},
+    clearCanvas: function(){},
+    //Bug Fix functions
+    clearText: function(){},
     //Undo Function Object
     undoObject: {
         actionCount: 0,
@@ -21,14 +29,6 @@ var canvasSettings = {
         savePoint: 0
     }
 }
-
-//Change color settings
-$("#colorStroke").on("change", function(){
-    canvasSettings.colorStroke = this.value;
-})
-$("#colorFill").on("change", function(){
-    canvasSettings.colorFill = this.value;
-})
 
 //Change brush size
 $("#brushSize")[0].oninput = function() {
@@ -40,6 +40,8 @@ $("#brushSize")[0].oninput = function() {
 
 //Change Tool
 $('body').on("click",".toolButton", function(){
+    //Bug fix
+    canvasSettings.clearText();
     // Undo eraser and clear all effect
     contextReal.globalCompositeOperation="source-over";
     //Assign function on click
@@ -49,29 +51,35 @@ $('body').on("click",".toolButton", function(){
     $('.toolButton').removeClass("active");
     $(this).addClass("active");
 });
+//Clear text
+canvasSettings.clearText = function(){
+    $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
+    $('#textInput').val('');
+}
+//Mobile Version
+$('body').on('click','.toolsDropdownButton',function(){
+    $('.adminDropdown').addClass('mobileHidden');
+    $('.sizeSlider').addClass('mobileHidden');
+    $('.toolsDropdown').toggleClass('mobileHidden');
+})
+$('body').on('click','.adminDropdownButton',function(){
+    $('.sizeSlider').addClass('mobileHidden');
+    $('.toolsDropdown').addClass('mobileHidden');
+    $('.adminDropdown').toggleClass('mobileHidden');
+})
+$('body').on('click','.menuOpen',function(){
+    $('#menu').removeClass('mobileHidden');
+    $('.menuOpen').addClass('mobileHidden');
+})
+$('body').on('click','.menuClose',function(){
+    $('#menu').addClass('mobileHidden');
+    $('.menuOpen').removeClass('mobileHidden');
+})
 
-
-//Keep canvas on resize
-$(window).resize(function(){
-    if($(window).width()>300){
-    var tempCanvas = document.createElement('canvas');
-    var tempContext = tempCanvas.getContext('2d');
-    tempCanvas.width = canvasReal.width;
-    tempCanvas.height = canvasReal.height;
-    tempContext.drawImage(canvasReal,0,0);
-    canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
-    canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""))+400;
-    contextReal.fillStyle = "white";
-    contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
-    contextReal.drawImage(tempCanvas,0,0);
-    }
-});
-
-//Initialize canvas with white background
-contextReal.fillStyle = "white";
-contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
-
-//Initialize blank canvas as undoObject's first state
-canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
-canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
-canvasSettings.undoObject.actionCount++;
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $('body').on('click','.showSize',function(){
+        $('.adminDropdown').addClass('mobileHidden');
+        $('.toolsDropdown').addClass('mobileHidden');
+        $('.sizeSlider').toggleClass('mobileHidden');
+    })
+}

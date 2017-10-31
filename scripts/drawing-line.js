@@ -6,7 +6,6 @@ class DrawingLine extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextDraft.strokeStyle = canvasSettings.colorStroke;
         this.contextReal.lineJoin = "round";
@@ -35,15 +34,6 @@ class DrawingLine extends PaintFunction{
         this.contextReal.stroke();
         this.onFinish();
     }
-
-    //Remove the text input box for text box bug(MF)
-    clearText(){
-        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
-        $('#textInput').val('');
-        this.textX= [];
-        this.textY = [];
-    }
-    
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();

@@ -4,7 +4,6 @@ class FindColor extends PaintFunction{
         this.context = contextReal;
     }
     onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         this.useColor(coord);
     }
     onDragging(coord,event){
@@ -14,7 +13,6 @@ class FindColor extends PaintFunction{
     onMouseUp(){}
     onMouseLeave(coord,event){}
     onMouseEnter(coord,event){}
-
     toHex(num){
         var hex = num.toString(16);
         return hex.length ==1 ? "0" + hex : hex;
@@ -23,14 +21,7 @@ class FindColor extends PaintFunction{
         var color = this.context.getImageData(coord[0],coord[1],1,1).data;
         var hexCode = this.toHex(color[0])+this.toHex(color[1])+this.toHex(color[2]);
         $('#colorStroke').val("#"+hexCode);
+        $('#colorStroke').css("background","#"+hexCode);
         canvasSettings.colorStroke = "#"+hexCode;
     }
-
-    clearText(){
-        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
-        $('#textInput').val('');
-        this.textX= [];
-        this.textY = [];
-    }
-
 }
