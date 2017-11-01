@@ -4,6 +4,9 @@ This is a mobile-responsive browser-based canvas project based on the windows pr
 ## Getting Started
  - Click [here](https://brockwei.github.io/canvas/) to use 
 
+## Features
+ - alt+1-9 to change tools, ctrl+z and ctrl+y enabled for undo/redo
+
 ## Built With
  - HTML/CSS/Javascript
  - ~~Bootstrap 3.3.7~~

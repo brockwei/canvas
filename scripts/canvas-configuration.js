@@ -30,9 +30,44 @@ var canvasSettings = {
     undoObject: {
         actionCount: 0,
         states: [],
-        savePoint: 0
+        savePoint: 0,
+        undoAction: function(){
+                        if(canvasSettings.undoObject.actionCount>1){
+                            canvasSettings.undoObject.actionCount--;
+                            canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
+                            contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount-1],0,0);
+                        }
+                    },
+        redoAction: function(){
+                        if(canvasSettings.undoObject.actionCount == canvasSettings.undoObject.savePoint && canvasSettings.undoObject.actionCount<canvasSettings.undoObject.states.length){
+                            canvasSettings.undoObject.actionCount++;
+                            canvasSettings.undoObject.savePoint++;
+                            contextReal.drawImage(canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount-1],0,0);
+                        }
+                        else if(canvasSettings.undoObject.actionCount != canvasSettings.undoObject.savePoint){
+                            canvasSettings.undoObject.states.splice(canvasSettings.undoObject.actionCount);
+                            canvasSettings.undoObject.savePoint = canvasSettings.undoObject.actionCount;
+                        }
+                    }
+    },
+    //hotkey usability:
+    keyPress: function(e) {
+        var evtobj = window.event? event : e;
+        if (evtobj.keyCode == 90 && evtobj.ctrlKey) {canvasSettings.undoObject.undoAction();} //ctrl+z
+        if (evtobj.keyCode == 89 && evtobj.ctrlKey) {canvasSettings.undoObject.redoAction();} //ctrl+y
+        if (evtobj.keyCode == 49 && evtobj.altKey) {$(".pencilButton").trigger("click");} //ctrl+1
+        if (evtobj.keyCode == 50 && evtobj.altKey) {$(".eraserButton").trigger("click");} //ctrl+2
+        if (evtobj.keyCode == 51 && evtobj.altKey) {$(".textButton").trigger("click");} //ctrl+3
+        if (evtobj.keyCode == 52 && evtobj.altKey) {$(".findColorButton").trigger("click");} //ctrl+4
+        if (evtobj.keyCode == 53 && evtobj.altKey) {$(".lineButton").trigger("click");} //ctrl+5
+        if (evtobj.keyCode == 54 && evtobj.altKey) {$(".circleButton").trigger("click");} //ctrl+6
+        if (evtobj.keyCode == 55 && evtobj.altKey) {$(".rectangleButton").trigger("click");} //ctrl+7
+        if (evtobj.keyCode == 56 && evtobj.altKey) {$(".quadraticCurveButton").trigger("click");} //ctrl+8
+        if (evtobj.keyCode == 57 && evtobj.altKey) {$(".polygonButton").trigger("click");} //ctrl+9
     }
 }
+
+document.onkeydown = canvasSettings.keyPress;
 
 //Change text size
 $("#textSize")[0].oninput = function() {
