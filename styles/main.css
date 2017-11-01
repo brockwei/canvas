@@ -105,6 +105,36 @@ input[type=range]::-webkit-slider-thumb {
 	background: rgba(255,255,255,1);
 	border: 1px solid rgb(0,191,255);
 }
+/*Text settings styles*/
+#textOptions {
+	margin-bottom: 5px;
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#textFont {
+	font-size: 12px;
+}
+.textSizeContainer{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+.showTextSize {
+	margin-bottom: 10px;
+	border-radius: 20%;
+	background: rgb(204,204,204);
+	font-size: 15px;
+	font-family: "Arial";
+	height: 55px;
+	width: 55px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#textSize {
+	width: 50px;
+}
 /*Brush Size styles*/
 #sizeMenu {
 	width: 100%;
@@ -249,11 +279,17 @@ canvas {
 		left: 5px;
 		background: rgba(35,35,35,0.7);
 	}
+	.textButton {
+		display: none;
+	}
 	.adminDropdown {
 		position: absolute;
 		border-radius: 5px;
 		top: 75px;
 		background: rgba(35,35,35,0.7);
+	}
+	#textOptions {
+		display: none !important;
 	}
 	.sizeSlider {
 		height: 27px;

@@ -13,14 +13,14 @@ class DrawingText extends PaintFunction{
     
     onMouseDown(coord,event){
         //Set up contextReal text properties
-        this.contextReal.font = `${this.fontWeight} ${this.fontSize}px ${this.fontStyle}`;
-        this.contextReal.fillStyle = this.fillStyle;
+        this.contextReal.font = `${this.fontWeight} ${canvasSettings.textSize}px ${canvasSettings.textFont}`;
+        this.contextReal.fillStyle = canvasSettings.colorStroke;
         //Store the text starting (x,y)
         this.textX.push(coord[0]);
         this.textY.push(coord[1]);
         //Make the input box appear on the clicked area
         this.fontStartY = this.textY[0] - this.fontSize;
-        $('#textInput').css({"display":"block","transform":"translateY("+coord[1]+"px) translateX("+coord[0]+"px)","font-size":this.fontSize,"color":this.fillStyle,"font-family":this.fontStyle,"font-weight":this.fontWeight,"padding":"0"});
+        $('#textInput').css({"display":"block","transform":"translateY("+coord[1]+"px) translateX("+coord[0]+"px)","font-size":canvasSettings.textSize+"px","color":canvasSettings.colorStroke,"font-family":canvasSettings.textFont,"font-weight":this.fontWeight,"padding":"0"});
         //If user click outside the input box, text will be printed on the canvas real
         if ((this.textX.length > 1) && (event.target.id != $('#textInput'))){
             this.outputText(this.contextReal);
@@ -29,7 +29,7 @@ class DrawingText extends PaintFunction{
     //Print the text on the canvas real
     outputText(ctx){
         let inputText = $('#textInput').val();
-        contextReal.fillText(inputText,this.textX[0],this.textY[0]+this.fontSize-2);
+        contextReal.fillText(inputText,this.textX[0],this.textY[0]+parseInt(canvasSettings.textSize));
         //contextReal.stroke();
         $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
         $('#textInput').val('');

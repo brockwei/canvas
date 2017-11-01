@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="styles/main.css">
 		<link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	</head>
 
 	<body>
@@ -31,6 +32,20 @@
 				</div>
 			</div>
 			<hr class="mobileHidden">
+			<!--Text Tools-->
+			<div id="textOptions">
+				<div class="textSizeContainer">
+					<div class="showTextSize">17</div>
+					<div class="textSizeSlider"><input type="range" min="8" max="50" value="17" step="1" class="slider" id="textSize"></div>
+				</div>
+				<select id="textFont" name="text Font" onchange="canvasSettings.changeText()">
+					<option> Arial </option>
+					<option> Metrophobic </option>
+					<option> Tahoma </option>
+					<option> Verdana </option>
+				</select>
+				<hr class="mobileHidden">
+			</div>
 			<!--Brush Size-->
 			<div id="sizeMenu">
 				<div class="showSize"><div class="sizeImage"></div></div>

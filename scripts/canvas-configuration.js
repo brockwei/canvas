@@ -3,9 +3,13 @@ var canvasSettings = {
     colorStroke: $("#colorStroke").val(),
     colorFill: $("#colorFill").val(),
     brushSize: $('#brushSize').val(),
+    //Text Options
+    textFont: $('#textFont').val(),
+    textSize: $('#textSize').val(),
     //Setting Functions
     changeStroke: function(jscolor){canvasSettings.colorStroke = "#"+jscolor;},
     changeFill: function(jscolor){canvasSettings.colorFill = "#"+jscolor;},
+    changeText: function(){canvasSettings.textFont=$('#textFont').val();$('#textFont').css('font-family',$('#textFont').val());$('.showTextSize').css('font-family',$('#textFont').val());},
     //Tool Functions
     pencilButton: DrawingFreehand,
     lineButton: DrawingLine,
@@ -30,6 +34,14 @@ var canvasSettings = {
     }
 }
 
+//Change text size
+$("#textSize")[0].oninput = function() {
+    canvasSettings.textSize = this.value;
+    //Change visual
+    $('.showTextSize').css("font-size",this.value+"px");
+    $(".showTextSize").html(this.value);
+}
+
 //Change brush size
 $("#brushSize")[0].oninput = function() {
     canvasSettings.brushSize = this.value;
@@ -50,9 +62,19 @@ $('body').on("click",".toolButton", function(){
     /*Highlight button*/
     $('.toolButton').removeClass("active");
     $(this).addClass("active");
+    //Shows textbox options if text tool is active
+    if(/textButton/.test($('.active')[0].className)){
+        $('#textOptions').fadeIn().css("display","flex");
+    }
+    else {
+        $('#textOptions').fadeOut().css("display","none");
+    }
     //User experience for Mobile:
     $('.toolsDropdownButton').html($('.active').html());
 });
+$(window).resize(function(){
+    $('#textOptions').css("display","none");
+})
 //Clear text
 canvasSettings.clearText = function(){
     $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
