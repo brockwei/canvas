@@ -114,12 +114,7 @@ if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) === false ) {
     $('body').on('click','.showSize',function(){
         $('.adminDropdown').addClass('mobileHidden');
         $('.toolsDropdown').addClass('mobileHidden');
-        if(/mobileHidden/.test($('.sizeSlider')[0].className)){
-            $('.sizeSlider').removeClass('mobileHidden');
-        }
-        else if(/mobileHidden/.test($('.sizeSlider')[0].className)==false){
-            $('.sizeSlider').addClass('mobileHidden');
-        }
+        $('.sizeSlider').removeClass('mobileHidden');
     });
     $('body').on('click','.toolsDropdownButton',function(){
         $('.sizeSlider').addClass('mobileHidden');
@@ -133,12 +128,7 @@ $(window).resize(function(){
         $('body').on('click','.showSize',function(){
             $('.adminDropdown').addClass('mobileHidden');
             $('.toolsDropdown').addClass('mobileHidden');
-            if(/mobileHidden/.test($('.sizeSlider')[0].className)){
-                $('.sizeSlider').removeClass('mobileHidden');
-            }
-            else if(/mobileHidden/.test($('.sizeSlider')[0].className)==false){
-                $('.sizeSlider').addClass('mobileHidden');
-            }
+            $('.sizeSlider').removeClass('mobileHidden');
         });
         $('body').on('click','.toolsDropdownButton',function(){
             $('.sizeSlider').addClass('mobileHidden');
