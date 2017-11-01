@@ -147,6 +147,7 @@ input[type=range]::-webkit-slider-thumb {
 	width: 50px;
 }
 .showSize {
+	position: relative;
 	margin-bottom: 10px;
 	border-radius: 20%;
 	background: rgb(204,204,204);
@@ -156,6 +157,7 @@ input[type=range]::-webkit-slider-thumb {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 25;
 }
 .sizeImage {
 	border-radius: 50%;
