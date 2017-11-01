@@ -32,6 +32,6 @@ class OpenFile extends PaintFunction{
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextReal.drawImage(this.image,coord[0],coord[1]);
-        currentFunction = new DrawingFreehand(coord,event);
+        currentFunction = new DrawingFreehand(contextReal,contextDraft);
     }
 }
