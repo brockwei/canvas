@@ -7,109 +7,89 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--CSS Libraries-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles/main.css">
-
+		<link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	</head>
 
 	<body>
-		<!--Menu section-->
-			<!-- Admin Menu for Mobiel Screen -->
-			<div class="mobileAdminMenu">
-				<div class="mobileAdminIcons">
-					<div class="bigToolButton"><a id="download"><img src="images/download.png"></a></div>				
-					<div class="toolButton undo"><img src="images/undo.png"></div>
-					<div class="toolButton redo"><img src="images/redo.png"></div>
-					<div class="toolButton clearButton"><i class="fa fa-trash-o fa-2x"></i></div>
+		<div class="menuOpen"><img class="img-responsive" src="images/palette.png"></div>
+		<div id="menu" class="mobileHidden">
+			<!--Main Tools-->
+			<div id="toolsMenu">
+				<div class="toolsDropdownButton inactive"><img class="img-responsive" src="images/pencil.png"></div>
+				<div class="toolsDropdown mobileHidden">
+					<div class="toolButton pencilButton active"><img class="img-responsive" src="images/pencil.png"></div>
+					<div class="toolButton eraserButton"><img class="img-responsive" src="images/eraser.png"></div>
+					<div class="toolButton textButton"><img class="img-responsive" src="images/text.png"></div>
+					<div class="toolButton findColorButton"><img class="img-responsive" src="images/colordropper.png"></div>
+
+					<div class="toolButton lineButton"><img class="img-responsive" src="images/line.png"></div>
+					<div class="toolButton circleButton"><img class="img-responsive" src="images/circle.png"></div>
+					<div class="toolButton rectangleButton"><img class="img-responsive" src="images/rectangle.png"></div>
+					<div class="toolButton quadraticCurveButton"><img class="img-responsive" src="images/curve.png"></div>
+					<div class="toolButton polygonButton"><img class="img-responsive" src="images/polygon.png"></div>
 				</div>
 			</div>
-			<!--Tools Menu-->
-			<div id="menu">
-				<div class="row">
-					<div id="toolsMenu" class="adminContainer col-md-2 col-lg-2">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="bigToolButton"><a id="download"><img src="images/download.png"></a></div>
-							</div>
-							<div class="col-md-6 col-lg-6">
-								<div class="toolButton undo"><img src="images/undo.png"></div>
-								<div class="toolButton redo"><img src="images/redo.png"></div>
-								<div class="toolButton clearButton"><i class="fa fa-trash-o fa-2x"></i></div>							
-							</div>
-						</div>
+			<hr class="mobileHidden">
+			<!--Text Tools-->
+			<div id="textOptions">
+				<div class="textSizeContainer">
+					<div class="showTextSize">17</div>
+					<div class="textSizeSlider"><input type="range" min="8" max="50" value="17" step="1" class="slider" id="textSize"></div>
+				</div>
+				<select id="textFont" name="text Font" onchange="canvasSettings.changeText()">
+					<option> Arial </option>
+					<option> Metrophobic </option>
+					<option> Tahoma </option>
+					<option> Verdana </option>
+				</select>
+				<hr class="mobileHidden">
+			</div>
+			<!--Brush Size-->
+			<div id="sizeMenu">
+				<div class="showSize"><div class="sizeImage"></div></div>
+				<div class="sizeSlider mobileHidden"><input type="range" min="1" max="51" value="5" step="2" class="slider" id="brushSize"></div>
+			</div>
+			<!--Color Palette-->
+			<div id="colorPalette">
+				<p class="mobileHidden">Stroke</p>
+				<input type="button" class="jscolor colorButton" value="#000000" onchange="canvasSettings.changeStroke(this.jscolor)" id="colorStroke"></input>
+				<p class="mobileHidden">Fill</p>
+				<input type="button" class="jscolor colorButton" value="#ffffff" onchange="canvasSettings.changeFill(this.jscolor)" id="colorFill"></input>
+			</div>
+			<!--Admin Functions-->
+			<div id="adminFunctions">
+				<div class="mobileShow">
+					<div class="adminDropdownButton inactive"><img class="img-responsive" src="images/settings.png"></div>
+					<div class="menuClose inactive"><img class="img-responsive" src="images/close.png"></div>
+				</div>
+				<div class="adminDropdown mobileHidden">
+					<div class="adminGroup">
+						<div class="btn"><a id="download"><img class="img-responsive" src="images/download.png"></a></div>
+						<div class="btn clearButton"><img class="img-responsive" src="images/clear.png"></div>
 					</div>
-					<!-- Tools Menu -->
-					<div class="toolContainer col-xs-6 col-sm-8 col-md-6 col-lg-6">
-						<div class="row">
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton pencilButton active"><img src="images/pencil.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton eraserButton"><img src="images/eraser.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton lineButton"><img src="images/line.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton rectangleButton"><img src="images/rectangle.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton circleButton"><img src="images/circle.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton quadraticCurveButton"><img src="images/curve.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton polygonButton"><img src="images/polygon.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton findColorButton"><img src="images/colordropper.png"></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<div class="toolButton textButton"><i class="fa fa-font fa-2x"></i></div>
-							</div>
-							<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-								<i class="fa fa-file-image-o fa-2x open"></i>
-								<input id="openFile"  type="file" name="pic" accept="image/*"></input>
-							</div>
-						</div>
+					<div id="undoRedoGroup">
+						<div class="btn undo"><img class="img-responsive" src="images/undo.png"></div>
+						<div class="btn redo"><img class="img-responsive" src="images/redo.png"></div>
 					</div>
-					<!-- Font Width, Border Color, Fill Color -->
-					<div id="sizeMenu" class="fontColorContainer col-xs-6 col-sm-4 col-md-4 col-lg-4">
-						<div class="row flexRow">
-							Thickness
-							<div class="showSize"><div class="sizeImage"></div></div>
-							<div class="sizeSlider"><input type="range" min="1" max="50" value="5" class="slider" id="brushSize"></div>
-						</div>
-						<div id="colorPalette" class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-								Stroke
-								<input class="colorButton" id="colorStroke" type="color" name="colorStroke" value="#00ff00">
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-								Fill
-								<input class="colorButton" id="colorFill" type="color" name="colorFill" value="#ff8000">
-							</div>
-						</div>
-					</div>
-				</div><!-- /. row -->
-			</div><!-- /. #menu -->
-		
+				</div>
+			</div>
+		</div>
 
-		<!--Canvas section-->
+		<!--Canvas Section-->
 		<div id="canvasContainer">
-			<canvas id="canvas-real" class="canvas" width='600px' height='400px'></canvas>
-			<canvas id="canvas-draft" class="canvas" width='1000px' height='800px'></canvas>
+			<canvas id="canvas-real" class="canvas"></canvas>
+			<canvas id="canvas-draft" class="canvas"></canvas>
 			<input id="textInput" name="inputField" value=""></input>
 		</div>
 
         <!--Javascript Libraries-->
 		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+		<script src="scripts/jscolor.min.js"></script>
 		
-		<!--Canvas Scripts-->
 		<!--Mother Script-->
 		<script src="scripts/canvas-common.js"></script> 
 		<script src="scripts/undo.js"></script>
@@ -124,16 +104,45 @@
 		<script src="scripts/drawing-polygon.js"></script>
 		<script src="scripts/drawing-text.js"></script>
 		<script src="scripts/find-color.js"></script>
-		<script src="scripts/drawing-clear.js"></script>
 		<script src="scripts/open-file.js"></script>
 
 		<!--Control Scripts-->
 		<script src="scripts/canvas-configuration.js"></script> <!--Testing this script-->
 		<script src="scripts/canvas-save.js"></script>
-		
+		<script src="scripts/drawing-clear.js"></script>
+
 		<script type='text/javascript'>    
-			// Switch based on User input, for example like clicking a button or something else. We will talk about this part in the section after this one. 
-			currentFunction = new DrawingLine(contextReal,contextDraft);
+			//Initialize Canvas 
+			currentFunction = new DrawingFreehand(contextReal,contextDraft);
+			canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
+			canvasReal.height = parseInt($("#canvasContainer").css("height").replace("px",""));
+			canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""));
+			canvasDraft.height = parseInt($("#canvasContainer").css("height").replace("px",""));
+			//Initialize canvas with white background
+			contextReal.fillStyle = "white";
+			contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
+			//Initialize blank canvas as undoObject's first state
+			canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
+			canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
+			canvasSettings.undoObject.actionCount++;
+
+			//Keep canvas on resize
+			$(window).resize(function(){
+				if($(window).width()>300){
+					var tempCanvas = document.createElement('canvas');
+					var tempContext = tempCanvas.getContext('2d');
+					tempCanvas.width = canvasReal.width;
+					tempCanvas.height = canvasReal.height;
+					tempContext.drawImage(canvasReal,0,0);
+					canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
+					canvasReal.height = parseInt($("#canvasContainer").css("height").replace("px",""));
+					canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""));
+					canvasDraft.height = parseInt($("#canvasContainer").css("height").replace("px",""));
+					contextReal.fillStyle = "white";
+					contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
+					contextReal.drawImage(tempCanvas,0,0);
+				}
+			});
 		</script>
 	</body>
 </html>

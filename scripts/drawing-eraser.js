@@ -5,7 +5,6 @@ class DrawingEraser extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         //this.context.globalCompositeOperation="destination-out";
         this.context.strokeStyle = "white";
         this.context.lineJoin = "round";
@@ -17,11 +16,8 @@ class DrawingEraser extends PaintFunction{
     }
     onDragging(coord,event){
         this.draw(coord[0],coord[1]);
-        
     }
-
-    onMouseMove(){
-    }
+    onMouseMove(){}
     onMouseUp(){
         this.context.closePath();
         this.context.stroke();
@@ -30,28 +26,17 @@ class DrawingEraser extends PaintFunction{
     onMouseLeave(coord,event){
         this.context.closePath();
         this.context.stroke();  
-
     }
     onMouseEnter(coord,event){
         this.context.beginPath();
         this.context.moveTo(coord[0],coord[1]);
     }
-
     draw(x,y){
         this.context.lineTo(x,y);
         this.context.moveTo(x,y);
         this.context.closePath();
         this.context.stroke();    
     }
-
-    //Remove the text input box for text box bug(MF)
-    clearText(){
-        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
-        $('#textInput').val('');
-        this.textX= [];
-        this.textY = [];
-    }
-    
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();

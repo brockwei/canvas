@@ -4,9 +4,8 @@ class DrawingRectangle extends PaintFunction{
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;            
     }
-    
+
     onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
         this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
@@ -38,15 +37,6 @@ class DrawingRectangle extends PaintFunction{
     }
     onMouseLeave(){}
     onMouseEnter(){}
-
-    //Remove the text input box for text box bug(MF)
-    clearText(){
-        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
-        $('#textInput').val('');
-        this.textX= [];
-        this.textY = [];
-    }
-    
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();

@@ -9,6 +9,7 @@ class DrawingPolygon extends PaintFunction{
         this.contextDraft.lineCap = "round"; //line cap shape
         this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.contextDraft.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
+        this.contextReal.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
         this.actionCount = 0;
         this.pointsArr = [];
     }
@@ -78,7 +79,6 @@ class DrawingPolygon extends PaintFunction{
             this.contextReal.lineTo(this.pointsArr[i].x,this.pointsArr[i].y);
             console.log('Fill line to '+this.pointsArr[i].x+' , '+this.pointsArr[i].y)
         }
-        this.contextReal.fillStyle = "red";
         this.contextReal.fill();
         this.contextReal.stroke();
     }

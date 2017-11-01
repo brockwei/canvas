@@ -3,17 +3,29 @@ var canvasSettings = {
     colorStroke: $("#colorStroke").val(),
     colorFill: $("#colorFill").val(),
     brushSize: $('#brushSize').val(),
-    //Functions
+    //Text Options
+    textFont: $('#textFont').val(),
+    textSize: $('#textSize').val(),
+    //Setting Functions
+    changeStroke: function(jscolor){canvasSettings.colorStroke = "#"+jscolor;},
+    changeFill: function(jscolor){canvasSettings.colorFill = "#"+jscolor;},
+    changeText: function(){canvasSettings.textFont=$('#textFont').val();$('#textFont').css('font-family',$('#textFont').val());$('.showTextSize').css('font-family',$('#textFont').val());},
+    //Tool Functions
     pencilButton: DrawingFreehand,
     lineButton: DrawingLine,
     rectangleButton: DrawingRectangle,
     circleButton: DrawingCircle,
     eraserButton: DrawingEraser,
-    clearButton: DrawingClear,
+        //clearButton: DrawingClear,
     quadraticCurveButton: DrawingQuadraticCurve,
     polygonButton: DrawingPolygon,
     findColorButton: FindColor,
     textButton: DrawingText,
+    //Admin Functions 
+    downloadCanvas : function(){},
+    clearCanvas: function(){},
+    //Bug Fix functions
+    clearText: function(){},
     //Undo Function Object
     undoObject: {
         actionCount: 0,
@@ -22,13 +34,13 @@ var canvasSettings = {
     }
 }
 
-//Change color settings
-$("#colorStroke").on("change", function(){
-    canvasSettings.colorStroke = this.value;
-})
-$("#colorFill").on("change", function(){
-    canvasSettings.colorFill = this.value;
-})
+//Change text size
+$("#textSize")[0].oninput = function() {
+    canvasSettings.textSize = this.value;
+    //Change visual
+    $('.showTextSize').css("font-size",this.value+"px");
+    $(".showTextSize").html(this.value);
+}
 
 //Change brush size
 $("#brushSize")[0].oninput = function() {
@@ -40,6 +52,8 @@ $("#brushSize")[0].oninput = function() {
 
 //Change Tool
 $('body').on("click",".toolButton", function(){
+    //Bug fix
+    canvasSettings.clearText();
     // Undo eraser and clear all effect
     contextReal.globalCompositeOperation="source-over";
     //Assign function on click
@@ -48,30 +62,55 @@ $('body').on("click",".toolButton", function(){
     /*Highlight button*/
     $('.toolButton').removeClass("active");
     $(this).addClass("active");
-});
-
-
-//Keep canvas on resize
-$(window).resize(function(){
-    if($(window).width()>300){
-    var tempCanvas = document.createElement('canvas');
-    var tempContext = tempCanvas.getContext('2d');
-    tempCanvas.width = canvasReal.width;
-    tempCanvas.height = canvasReal.height;
-    tempContext.drawImage(canvasReal,0,0);
-    canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
-    canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""))+400;
-    contextReal.fillStyle = "white";
-    contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
-    contextReal.drawImage(tempCanvas,0,0);
+    //Shows textbox options if text tool is active
+    if(/textButton/.test($('.active')[0].className)){
+        $('#textOptions').fadeIn().css("display","flex");
     }
+    else {
+        $('#textOptions').fadeOut().css("display","none");
+    }
+    //User experience for Mobile:
+    $('.toolsDropdownButton').html($('.active').html());
 });
+$(window).resize(function(){
+    $('#textOptions').css("display","none");
+})
+//Clear text
+canvasSettings.clearText = function(){
+    $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
+    $('#textInput').val('');
+}
+//Mobile Version
+$('body').on('click','.toolsDropdownButton',function(){
+    $('.adminDropdown').addClass('mobileHidden');
+    $('.sizeSlider').addClass('mobileHidden');
+    $('.toolsDropdown').toggleClass('mobileHidden');
+})
+$('body').on('click','.adminDropdownButton',function(){
+    $('.sizeSlider').addClass('mobileHidden');
+    $('.toolsDropdown').addClass('mobileHidden');
+    $('.adminDropdown').toggleClass('mobileHidden');
+})
+$('body').on('click','.menuOpen',function(){
+    $('#menu').removeClass('mobileHidden');
+    $('.menuOpen').addClass('mobileHidden');
+})
+$('body').on('click','.menuClose',function(){
+    $('#menu').addClass('mobileHidden');
+    $('.menuOpen').removeClass('mobileHidden');
+})
 
-//Initialize canvas with white background
-contextReal.fillStyle = "white";
-contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
+/*
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $('body').on('click','.showSize',function(){
+        $('.adminDropdown').addClass('mobileHidden');
+        $('.toolsDropdown').addClass('mobileHidden');
+        $('.sizeSlider').toggleClass('mobileHidden');
+    })
+}*/
 
-//Initialize blank canvas as undoObject's first state
-canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
-canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
-canvasSettings.undoObject.actionCount++;
+$('body').on('click','.showSize',function(){
+    $('.adminDropdown').addClass('mobileHidden');
+    $('.toolsDropdown').addClass('mobileHidden');
+    $('.sizeSlider').toggleClass('mobileHidden');
+});
