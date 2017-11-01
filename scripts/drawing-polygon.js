@@ -71,16 +71,13 @@ class DrawingPolygon extends PaintFunction{
     }
 
     polygonFillTest(){
-        var firstSet = [this.pointsArr[0]];
-        console.log('First Set '+JSON.stringify(firstSet));
         this.contextReal.beginPath();
-        this.contextReal.moveTo(firstSet[0].x,firstSet[0].y);
-        console.log('Fill move to '+ firstSet[0].x+' , '+firstSet[0].y)
+        this.contextReal.moveTo(this.pointsArr[0].x,this.pointsArr[0].y);
+        console.log('Fill move to '+ this.pointsArr[0].x+' , '+this.pointsArr[0].y)
         for (var i = 1; i < this.pointsArr.length; i++){
             this.contextReal.lineTo(this.pointsArr[i].x,this.pointsArr[i].y);
+            console.log('Fill line to '+this.pointsArr[i].x+' , '+this.pointsArr[i].y)
         }
-        //this.contextReal.lineTo(firstSet[0],firstSet[1]);
-        console.log('second first set '+firstSet);
         this.contextReal.fillStyle = "red";
         this.contextReal.fill();
         this.contextReal.stroke();

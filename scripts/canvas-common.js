@@ -55,7 +55,7 @@ class PaintFunction{
 //Hammertime
 var hammertime = new Hammer(canvasDraft);
 hammertime.on('drag swipe tap press', function(ev) {
-console.log(ev.type);
+console.log('Hammer '+ev.type);
 });
 
 hammertime.on('press',function(ev){
