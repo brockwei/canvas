@@ -109,8 +109,13 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     })
 }*/
 
-$('body').on('click press tap','.showSize',function(){
+$('body').on('click','.showSize',function(){
     $('.adminDropdown').addClass('mobileHidden');
     $('.toolsDropdown').addClass('mobileHidden');
-    $('.sizeSlider').toggleClass('mobileHidden');
+    if(/mobileHidden/.test($('.sizeSlider')[0].className)){
+        $('.sizeSlider').removeClass('mobileHidden');
+    }
+    else if(/mobileHidden/.test($('.sizeSlider')[0].className)==false){
+        $('.sizeSlider').addClass('mobileHidden');    
+    }
 });
