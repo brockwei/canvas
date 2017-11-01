@@ -110,6 +110,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }*/
 
 $('body').on('click','.showSize',function(){
+    alert("test");
     $('.adminDropdown').addClass('mobileHidden');
     $('.toolsDropdown').addClass('mobileHidden');
     $('.sizeSlider').toggleClass('mobileHidden');
