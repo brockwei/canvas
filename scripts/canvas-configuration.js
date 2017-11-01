@@ -83,11 +83,11 @@ canvasSettings.clearText = function(){
 //Mobile Version
 $('body').on('click','.toolsDropdownButton',function(){
     $('.adminDropdown').addClass('mobileHidden');
-    $('.sizeSlider').addClass('mobileHidden');
+    //$('.sizeSlider').addClass('mobileHidden');
     $('.toolsDropdown').toggleClass('mobileHidden');
 })
 $('body').on('click','.adminDropdownButton',function(){
-    $('.sizeSlider').addClass('mobileHidden');
+    //$('.sizeSlider').addClass('mobileHidden');
     $('.toolsDropdown').addClass('mobileHidden');
     $('.adminDropdown').toggleClass('mobileHidden');
 })
@@ -109,9 +109,37 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     })
 }*/
 
-$('body').on('click','.showSize',function(){
-    alert("test");
-    $('.adminDropdown').addClass('mobileHidden');
-    $('.toolsDropdown').addClass('mobileHidden');
-    $('.sizeSlider').toggleClass('mobileHidden');
+//Features disabled on iOS
+if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) === false ) {
+    $('body').on('click','.showSize',function(){
+        $('.adminDropdown').addClass('mobileHidden');
+        $('.toolsDropdown').addClass('mobileHidden');
+        if(/mobileHidden/.test($('.sizeSlider').attr("class"))==true){
+            $('.sizeSlider').removeClass('mobileHidden');
+        }
+        else if(/mobileHidden/.test($('.sizeSlider').attr("class"))==false){
+            $('.sizeSlider').addClass('mobileHidden');
+        }
+    });
+    $('body').on('click','.toolsDropdownButton',function(){
+        $('.sizeSlider').addClass('mobileHidden');
+    })
+    $('body').on('click','.adminDropdownButton',function(){
+        $('.sizeSlider').addClass('mobileHidden');
+    })
+}
+$(window).resize(function(){
+    if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) === false ) {
+        $('body').on('click','.showSize',function(){
+            $('.adminDropdown').addClass('mobileHidden');
+            $('.toolsDropdown').addClass('mobileHidden');
+            $('.sizeSlider').removeClass('mobileHidden');
+        });
+        $('body').on('click','.toolsDropdownButton',function(){
+            $('.sizeSlider').addClass('mobileHidden');
+        })
+        $('body').on('click','.adminDropdownButton',function(){
+            $('.sizeSlider').addClass('mobileHidden');
+        })
+    }
 });
