@@ -105,6 +105,14 @@ input[type=range]::-webkit-slider-thumb {
 	background: rgba(255,255,255,1);
 	border: 1px solid rgb(0,191,255);
 }
+/*Filter tools styles*/
+.filtersDropdown {
+	width: 100%;
+	margin-top: 10px;
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: space-around;
+}
 /*Text settings styles*/
 #textOptions {
 	margin-bottom: 5px;
@@ -280,6 +288,15 @@ canvas {
 		position: absolute;
 		padding-top: 0;
 		top: 75px;
+		left: 5px;
+		background: rgba(35,35,35,0.7);
+	}
+	.filtersDropdown {
+		width: 111px;
+		border-radius: 5px;
+		position: absolute;
+		padding-top: 0;
+		top: 65px;
 		left: 5px;
 		background: rgba(35,35,35,0.7);
 	}

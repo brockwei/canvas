@@ -17,7 +17,10 @@
 		<div id="menu" class="mobileHidden">
 			<!--Main Tools-->
 			<div id="toolsMenu">
-				<div class="toolsDropdownButton inactive"><img class="img-responsive" src="images/pencil.png"></div>
+				<div class="mobileShow">
+					<div class="toolsDropdownButton inactive"><img class="img-responsive" src="images/pencil.png"></div>
+					<div class="filtersDropdownButton inactive"><img class="img-responsive" src="images/themes.png"></div>
+				</div>
 				<div class="toolsDropdown mobileHidden">
 					<div class="toolButton pencilButton active"><img class="img-responsive" src="images/pencil.png"></div>
 					<div class="toolButton eraserButton"><img class="img-responsive" src="images/eraser.png"></div>
@@ -29,6 +32,15 @@
 					<div class="toolButton rectangleButton"><img class="img-responsive" src="images/rectangle.png"></div>
 					<div class="toolButton quadraticCurveButton"><img class="img-responsive" src="images/curve.png"></div>
 					<div class="toolButton polygonButton"><img class="img-responsive" src="images/polygon.png"></div>
+				</div>
+			</div>
+			
+			<!--Filters-->
+			<div id="filtersMenu">
+				<div class="filtersDropdown mobileHidden">
+					<div class="btn grayScaleFilter"><img class="img-responsive" src="images/grayscale.png"></div>
+					<div class="btn brightenFilter"><img class="img-responsive" src="images/bright.png"></div>
+					<div class="btn sharpenFilter"><img class="img-responsive" src="images/sharp.png"></div>
 				</div>
 			</div>
 			<hr class="mobileHidden">
@@ -113,6 +125,7 @@
 
 		<!--Control Scripts-->
 		<script src="scripts/canvas-configuration.js"></script> <!--Testing this script-->
+		<script src="scripts/drawing-filter.js"></script>
 		<script src="scripts/canvas-save.js"></script>
 		<script src="scripts/drawing-clear.js"></script>
 

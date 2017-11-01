@@ -16,11 +16,12 @@ var canvasSettings = {
     rectangleButton: DrawingRectangle,
     circleButton: DrawingCircle,
     eraserButton: DrawingEraser,
-        //clearButton: DrawingClear,
     quadraticCurveButton: DrawingQuadraticCurve,
     polygonButton: DrawingPolygon,
     findColorButton: FindColor,
     textButton: DrawingText,
+    //Canvas Filter
+    filterImage: function(){},
     //Admin Functions 
     downloadCanvas : function(){},
     clearCanvas: function(){},
@@ -118,12 +119,20 @@ canvasSettings.clearText = function(){
 //Mobile Version
 $('body').on('click','.toolsDropdownButton',function(){
     $('.adminDropdown').addClass('mobileHidden');
+    $('.filtersDropdown').addClass('mobileHidden');
     //$('.sizeSlider').addClass('mobileHidden');
     $('.toolsDropdown').toggleClass('mobileHidden');
+})
+$('body').on('click','.filtersDropdownButton',function(){
+    $('.adminDropdown').addClass('mobileHidden');
+    $('.toolsDropdown').addClass('mobileHidden');
+    //$('.sizeSlider').addClass('mobileHidden');
+    $('.filtersDropdown').toggleClass('mobileHidden');
 })
 $('body').on('click','.adminDropdownButton',function(){
     //$('.sizeSlider').addClass('mobileHidden');
     $('.toolsDropdown').addClass('mobileHidden');
+    $('.filtersDropdown').addClass('mobileHidden');
     $('.adminDropdown').toggleClass('mobileHidden');
 })
 $('body').on('click','.menuOpen',function(){
@@ -135,20 +144,12 @@ $('body').on('click','.menuClose',function(){
     $('.menuOpen').removeClass('mobileHidden');
 })
 
-/*
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    $('body').on('click','.showSize',function(){
-        $('.adminDropdown').addClass('mobileHidden');
-        $('.toolsDropdown').addClass('mobileHidden');
-        $('.sizeSlider').toggleClass('mobileHidden');
-    })
-}*/
-
 //Features disabled on iOS
 if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) === false ) {
     $('body').on('click','.showSize',function(){
         $('.adminDropdown').addClass('mobileHidden');
         $('.toolsDropdown').addClass('mobileHidden');
+        $('.filtersDropdown').addClass('mobileHidden');
         if(/mobileHidden/.test($('.sizeSlider').attr("class"))==true){
             $('.sizeSlider').removeClass('mobileHidden');
         }
@@ -162,7 +163,11 @@ if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) === false ) {
     $('body').on('click','.adminDropdownButton',function(){
         $('.sizeSlider').addClass('mobileHidden');
     })
+    $('body').on('click','.filtersDropdownButton',function(){
+        $('.sizeSlider').addClass('mobileHidden');
+    })
 }
+/*
 $(window).resize(function(){
     if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) === false ) {
         $('body').on('click','.showSize',function(){
@@ -177,4 +182,22 @@ $(window).resize(function(){
             $('.sizeSlider').addClass('mobileHidden');
         })
     }
+});*/
+
+//Keep canvas on resize
+$(window).resize(function(){
+	if($(window).width()>300){
+		var tempCanvas = document.createElement('canvas');
+		var tempContext = tempCanvas.getContext('2d');
+		tempCanvas.width = canvasReal.width;
+		tempCanvas.height = canvasReal.height;
+		tempContext.drawImage(canvasReal,0,0);
+		canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
+		canvasReal.height = parseInt($("#canvasContainer").css("height").replace("px",""));
+		canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""));
+		canvasDraft.height = parseInt($("#canvasContainer").css("height").replace("px",""));
+		contextReal.fillStyle = "white";
+		contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
+		contextReal.drawImage(tempCanvas,0,0);
+	}
 });

@@ -21,5 +21,6 @@ This is a mobile-responsive browser-based canvas project based on the windows pr
  - [Wey Feng Ong](https://github.com/weyfengaccelerate)
 
 ## Acknowledgements
- - [Gordon Lau](https://github.com/gordonlau) - For his support in this project
- - [Icons8](https://icons8.com/) - For the canvas icons
+ - [Gordon Lau](https://github.com/gordonlau) - For his hard work and support in this project
+ - [Icons8](https://icons8.com/) - For providing the canvas icons
+ - [html5rocks](https://www.html5rocks.com/en/tutorials/canvas/imagefilters/) - For providing the code for the filters
