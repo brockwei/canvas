@@ -3,6 +3,12 @@ class DrawingPolygon extends PaintFunction{
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
+        this.actionCount = 0;
+        this.pointsArr = [];
+    }
+
+    onMouseDown(coord,event){
+        this.clearText(this.contextReal);//For text box bug(MF)
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.lineCap = "round"; //line cap shape
@@ -10,12 +16,7 @@ class DrawingPolygon extends PaintFunction{
         this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.contextDraft.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.contextReal.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
-        this.actionCount = 0;
-        this.pointsArr = [];
-    }
 
-    onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         //action for the First click
         if (this.actionCount === 0){
             this.firstOrigX = coord[0];
