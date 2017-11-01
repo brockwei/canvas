@@ -83,11 +83,11 @@ canvasSettings.clearText = function(){
 //Mobile Version
 $('body').on('click','.toolsDropdownButton',function(){
     $('.adminDropdown').addClass('mobileHidden');
-    $('.sizeSlider').addClass('mobileHidden');
+    //$('.sizeSlider').addClass('mobileHidden');
     $('.toolsDropdown').toggleClass('mobileHidden');
 })
 $('body').on('click','.adminDropdownButton',function(){
-    $('.sizeSlider').addClass('mobileHidden');
+    //$('.sizeSlider').addClass('mobileHidden');
     $('.toolsDropdown').addClass('mobileHidden');
     $('.adminDropdown').toggleClass('mobileHidden');
 })
@@ -109,8 +109,32 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     })
 }*/
 
-$('body').on('click','.showSizePlaceholder',function(){
-    $('.adminDropdown').addClass('mobileHidden');
-    $('.toolsDropdown').addClass('mobileHidden');
-    $('.sizeSlider').toggleClass('mobileHidden');
+//Features disabled on iOS
+if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) == false ) {
+    $('body').on('click','.showSize',function(){
+        $('.adminDropdown').addClass('mobileHidden');
+        $('.toolsDropdown').addClass('mobileHidden');
+        $('.sizeSlider').toggleClass('mobileHidden');
+    });
+    $('body').on('click','.toolsDropdownButton',function(){
+        $('.sizeSlider').addClass('mobileHidden');
+    })
+    $('body').on('click','.adminDropdownButton',function(){
+        $('.sizeSlider').addClass('mobileHidden');
+    })
+}
+$(window).resize(function(){
+    if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) == false ) {
+        $('body').on('click','.showSize',function(){
+            $('.adminDropdown').addClass('mobileHidden');
+            $('.toolsDropdown').addClass('mobileHidden');
+            $('.sizeSlider').toggleClass('mobileHidden');
+        });
+        $('body').on('click','.toolsDropdownButton',function(){
+            $('.sizeSlider').addClass('mobileHidden');
+        })
+        $('body').on('click','.adminDropdownButton',function(){
+            $('.sizeSlider').addClass('mobileHidden');
+        })
+    }
 });

@@ -71,14 +71,6 @@ input[type=range]::-webkit-slider-thumb {
 	width: 33px;
 	display: none;
 }
-.showSizePlaceholder.inactive {
-	position: absolute;
-	margin: 0;
-	border: 1px solid blue;
-	background: none;
-	height: 55px;
-	width: 55px;
-}
 /*Tools*/
 #toolsMenu {
 	width: 100%;
