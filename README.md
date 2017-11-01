@@ -1,12 +1,12 @@
 # Canvas Project
-This is a browser-based canvas project based on the windows program paint. 
+This is a mobile-responsive browser-based canvas project based on the windows program paint. 
 
 ## Getting Started
  - Click [here](https://brockwei.github.io/canvas/) to use 
 
 ## Built With
  - HTML/CSS/Javascript
- - Bootstrap 3.3.7
+ - ~~Bootstrap 3.3.7~~
  - jQuery 3.2.1
  - jQuery UI 1.12.1
  - jscolor-2.0.4
