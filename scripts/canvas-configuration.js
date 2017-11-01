@@ -109,7 +109,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     })
 }*/
 
-$('body').on('click','.showSizePlaceholder',function(){
+$('body').on('click','.showSize',function(){
     $('.adminDropdown').addClass('mobileHidden');
     $('.toolsDropdown').addClass('mobileHidden');
     $('.sizeSlider').toggleClass('mobileHidden');
