@@ -4,7 +4,7 @@ function uploadImage(){
     $('#import').change(function(){
         var uploadImg = new Image();
         uploadImg.onload = function(){
-            contextDraft.drawImage(uploadImg,50,50);
+            contextDraft.drawImage(uploadImg,200,100);
             currentFunction = new OpenFile(contextReal,contextDraft,uploadImg);
         }
         uploadImg.src = URL.createObjectURL(this.files[0]);
@@ -21,11 +21,20 @@ class OpenFile extends PaintFunction{
         this.image = img;
         this.imageHalfWidth = img.width/2;
         this.imageHalfHeight = img.height/2;
+        this.actionCount = 0;
+    }
+    onMouseMove(coord){
+        if (this.actionCount === 0){
+            console.log('Image width '+this.image.width);
+            console.log('Image height '+this.image.height);
+            this.contextDraft.lineWidth = 5;
+            this.contextDraft.setLineDash([5,5]);
+            this.contextDraft.strokeStyle = "rgb(0,192,255)";
+            this.contextDraft.strokeRect(200,100,this.imageHalfWidth*2,this.imageHalfHeight*2);
+        }
     }
     onMouseDown(coord){
-        console.log('Image width '+this.imageHalfWidth);
-        console.log('Image height '+this.imageHalfHeight);
-        console.log('Original mouse (x,y) '+coord[0]+' , '+coord[1]);
+        this.actionCount = 1;
         dragging = true;
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextDraft.drawImage(this.image,coord[0]-this.imageHalfWidth,coord[1]-this.imageHalfHeight);
