@@ -59,13 +59,13 @@ function mobileMode(){
     hammertime.on('drag swipe tap press pan panup pandown', function(ev) {
     console.log(ev.type);
     });
-    
+    /*
         hammertime.on('tap',function(ev){
             let mouseX = ev.center.x - canvasDraft.offsetLeft;
             let mouseY = ev.center.y - canvasDraft.offsetTop;
             currentFunction.onMouseDown([mouseX,mouseY],ev);
             //console.log(mouseX+":"+mouseY + ":"+ev.center.x + ","+ev.center.y);
-        })
+        })*/
     hammertime.on('panstart',function(ev){
         let mouseX = ev.center.x - canvasDraft.offsetLeft;
         let mouseY = ev.center.y - canvasDraft.offsetTop;
