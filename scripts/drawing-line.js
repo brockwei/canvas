@@ -7,9 +7,7 @@ class DrawingLine extends PaintFunction{
     
     onMouseDown(coord,event){
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
-        this.contextDraft.strokeStyle = canvasSettings.colorStroke;
-        this.contextReal.lineJoin = "round";
-        this.contextDraft.lineJoin = "round";
+        this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.lineCap = "round"; //lineCap = "butt" or "round"
         this.contextDraft.lineCap = "round"; //lineCap = "butt" or "round"
         this.contextReal.lineWidth = canvasSettings.brushSize //canvas-configuration.js

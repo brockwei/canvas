@@ -227,7 +227,9 @@ input[type=range]::-webkit-slider-thumb {
 	background-image: none;
 	border: 1px dotted gray;
 }
-
+#import{
+	display: none;
+}
 /*-------------------Canvas styles-------------------*/
 canvas {
 	position: absolute;
@@ -237,7 +239,6 @@ canvas {
 	min-width: 100%;
 	overflow: hidden;
 	-webkit-touch-callout:none;
-<<<<<<< HEAD
     -webkit-user-select:none;
     -khtml-user-select:none;
     -moz-user-select:none;
@@ -245,15 +246,6 @@ canvas {
     touch-action: none;
     -ms-touch-action:none;
     user-select:none;
-=======
-	-webkit-user-select:none;
-	-khtml-user-select:none;
-	-moz-user-select:none;
-	-ms-user-select:none;
-	touch-action: none;
-	-ms-touch-action:none;
-	user-select:none;
->>>>>>> cacc44b026cd601a5ba7884da38b94f9c8528f61
 }
 #canvas-real {
 	background: white;
