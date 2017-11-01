@@ -157,6 +157,12 @@ input[type=range]::-webkit-slider-thumb {
 	justify-content: center;
 	align-items: center;
 }
+.showSizePlaceholder {
+	position: absolute;
+	height: 55px;
+	width: 55px;
+	background: blue;
+}
 .sizeImage {
 	border-radius: 50%;
 	background: rgb(0,0,0);
