@@ -1,0 +1,70 @@
+/*Mobile Responsive*/
+@media (max-width:767px){
+	#menu {
+		height: auto;
+		display: flex;
+		align-items: flex-start;
+		width: auto;
+		background: transparent;
+		border: none;
+	}
+	.menuOpen {
+	
+		display:block;
+	}
+	#menu.mobileHidden {
+		display: none;
+	}
+	.toolsDropdown {
+		width: 150px;
+		border-radius: 5px;
+		position: absolute;
+		padding-top: 0;
+		top: 75px;
+		left: 5px;
+		background: rgba(35,35,35,0.7);
+	}
+	.filtersDropdown {
+		width: 111px;
+		border-radius: 5px;
+		position: absolute;
+		padding-top: 0;
+		top: 65px;
+		left: 5px;
+		background: rgba(35,35,35,0.7);
+	}
+	.textButton {
+		display: none;
+	}
+	.adminDropdown {
+		position: absolute;
+		border-radius: 5px;
+		top: 75px;
+		background: rgba(35,35,35,0.7);
+	}
+	#textOptions {
+		display: none !important;
+	}
+	.sizeSlider {
+		height: 27px;
+		border-radius: 5px;
+		background: rgba(35,35,35,0.7);
+	}
+	#colorPalette {
+		margin: 0;
+		padding: 5px 0 5px 0;
+	}
+	.inactive {
+		display: block;
+		margin-bottom: -4px;
+	}
+	.mobileShow {
+		display: block;
+	}
+	.mobileHidden {
+		display: none;
+	}
+	#undoRedoGroup.mobileHidden {
+		display:none;
+	}
+}

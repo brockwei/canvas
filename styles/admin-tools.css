@@ -1,0 +1,43 @@
+/*Admin Tools styles*/
+#adminFunctions {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.adminGroup {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+#undoRedoGroup {
+	display: flex;
+}
+.mobileShow {
+	display: none;
+}
+.btn {
+	border-radius: 20%;
+	padding: 5px;
+	margin: 2px;
+	width: 33px;
+	background: rgb(200,200,200);
+}
+.btn:hover {
+	background: rgba(255,255,255,1);
+	transition: all 0.2s;
+}
+.btn:active {
+	background: rgba(255,255,255,1);
+}
+#textInput{
+	display: none;
+	position: absolute;
+	z-index: 5;
+	background-color: transparent;
+	background-image: none;
+	border: 1px dotted gray;
+}
+#import{
+	display: none;
+}

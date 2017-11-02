@@ -1,0 +1,81 @@
+/*Text settings styles*/
+#textOptions {
+	margin-bottom: 5px;
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#textFont {
+	font-size: 12px;
+}
+.textSizeContainer{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+.showTextSize {
+	margin-bottom: 10px;
+	border-radius: 20%;
+	background: rgb(204,204,204);
+	font-size: 15px; /*Default*/
+	font-family: "Arial";
+	height: 55px;
+	width: 55px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#textSize {
+	width: 50px;
+}
+/*Brush Size styles*/
+#sizeMenu {
+	width: 100%;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#brushSize {
+	width: 50px;
+}
+.showSize {
+	margin-bottom: 10px;
+	border-radius: 20%;
+	background: rgb(204,204,204);
+	font-size: 3px;
+	height: 55px;
+	width: 55px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sizeImage {
+	border-radius: 50%;
+	background: rgb(0,0,0);
+	height: 5px; /*Default values*/
+	width: 5px; /*Default values*/
+}
+/*Color Palette styles*/
+#colorPalette {
+	margin: 10px auto;
+	padding: 5px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: center;
+}
+#colorStroke,#colorFill {
+	color: transparent !important;
+	outline: none;
+	border: 1px solid rgb(152,152,152);
+	border-radius: 20%;
+}
+#colorStroke:active,#colorFill:active {
+	border: 1px solid rgb(0,192,255);
+}
+.colorButton {
+	width: 33px;
+	height: 33px;
+}

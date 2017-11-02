@@ -23,7 +23,7 @@ class DrawingPolygon extends PaintFunction{
             this.contextReal.beginPath();
             this.contextReal.moveTo(this.firstOrigX,this.firstOrigY);
                 this.pointsArr.push({"x":this.firstOrigX,"y":this.firstOrigY});
-                console.log('pointsArr at 0-MouseDown '+JSON.stringify(this.pointsArr));
+                //console.log('pointsArr at 0-MouseDown '+JSON.stringify(this.pointsArr));
         }
         dragging = true;
     }
@@ -35,7 +35,7 @@ class DrawingPolygon extends PaintFunction{
             this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
             this.toDrawReal(this.newX,this.newY,coord[0],coord[1]);
                 this.pointsArr.push({"x":coord[0],"y":coord[1]});
-                console.log('pointsArr at 0-MouseUp '+JSON.stringify(this.pointsArr));
+                //console.log('pointsArr at 0-MouseUp '+JSON.stringify(this.pointsArr));
             this.actionCount = 1;
         } else if (this.actionCount === 1){
             if (Math.pow((this.firstOrigX - coord[0]),2)<400 && Math.pow((this.firstOrigY - coord[1]),2)<400){
@@ -43,10 +43,10 @@ class DrawingPolygon extends PaintFunction{
                 this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
                 this.contextReal.lineTo(this.firstOrigX,this.firstOrigY);
                 this.pointsArr.push({"x":this.firstOrigX,"y":this.firstOrigY});
-                console.log('pointsArr at 1-MouseUp '+JSON.stringify(this.pointsArr));
+                //console.log('pointsArr at 1-MouseUp '+JSON.stringify(this.pointsArr));
                 this.contextReal.stroke();
                 this.polygonFillTest();
-                console.log('Points array '+JSON.stringify(this.pointsArr));
+                //console.log('Points array '+JSON.stringify(this.pointsArr));
                 this.pointsArr = [];
                 this.onFinish();//Stores undo state
                 this.actionCount = 0;
@@ -57,10 +57,10 @@ class DrawingPolygon extends PaintFunction{
                 this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
                 this.toDrawReal(this.newX,this.newY,coord[0],coord[1]);
                     this.pointsArr.push({"x":coord[0],"y":coord[1]});
-                    console.log('pointsArr at 0-MouseUp '+JSON.stringify(this.pointsArr));
+                    //console.log('pointsArr at 0-MouseUp '+JSON.stringify(this.pointsArr));
             }
         }
-        console.log('mouse up '+ coord[0],coord[1]);
+        //console.log('mouse up '+ coord[0],coord[1]);
     }
     onDragging(coord,event){
         if (this.actionCount === 0){
@@ -72,10 +72,10 @@ class DrawingPolygon extends PaintFunction{
     polygonFillTest(){
         this.contextReal.beginPath();
         this.contextReal.moveTo(this.pointsArr[0].x,this.pointsArr[0].y);
-        console.log('Fill move to '+ this.pointsArr[0].x+' , '+this.pointsArr[0].y)
+        //console.log('Fill move to '+ this.pointsArr[0].x+' , '+this.pointsArr[0].y)
         for (var i = 1; i < this.pointsArr.length; i++){
             this.contextReal.lineTo(this.pointsArr[i].x,this.pointsArr[i].y);
-            console.log('Fill line to '+this.pointsArr[i].x+' , '+this.pointsArr[i].y)
+            //console.log('Fill line to '+this.pointsArr[i].x+' , '+this.pointsArr[i].y)
         }
         this.contextReal.fill();
         this.contextReal.stroke();

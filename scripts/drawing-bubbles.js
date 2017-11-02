@@ -37,7 +37,7 @@ class DrawingBubbles extends PaintFunction{
                 false, Math.PI * 2, false);
                 this.context.fill();
         }
-        console.log(coord[0],coord[1]);
+        //console.log(coord[0],coord[1]);
     };
     onMouseMove(){}
     onMouseUp(){
