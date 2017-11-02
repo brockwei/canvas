@@ -102,10 +102,10 @@ $('body').on("click",".toolButton", function(){
     $(this).addClass("active");
     //Shows textbox options if text tool is active
     if(/textButton/.test($('.active')[0].className)){
-        $('#textOptions').fadeIn().css("display","flex");
+        $('#textOptions').slideDown().css("display","flex");
     }
     else {
-        $('#textOptions').fadeOut().css("display","none");
+        $('#textOptions').slideUp();//.css("display","none");
     }
     //User experience for Mobile:
     $('.toolsDropdownButton').html($('.active').html());

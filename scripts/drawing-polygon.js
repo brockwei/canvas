@@ -12,6 +12,7 @@ class DrawingPolygon extends PaintFunction{
         this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.lineCap = "round"; //line cap shape
         this.contextDraft.lineCap = "round"; //line cap shape
+        this.contextReal.lineJoin = "round";
         this.contextReal.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.contextDraft.lineWidth = canvasSettings.brushSize; //canvas-configuration.js
         this.contextReal.fillStyle = canvasSettings.colorFill; //canvas-configuration.js
