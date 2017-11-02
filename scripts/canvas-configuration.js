@@ -58,15 +58,17 @@ var canvasSettings = {
         var evtobj = window.event? event : e;
         if (evtobj.keyCode == 90 && evtobj.ctrlKey) {canvasSettings.undoObject.undoAction();} //ctrl+z
         if (evtobj.keyCode == 89 && evtobj.ctrlKey) {canvasSettings.undoObject.redoAction();} //ctrl+y
-        if (evtobj.keyCode == 49 && evtobj.altKey) {$(".pencilButton").trigger("click");} //ctrl+1
-        if (evtobj.keyCode == 50 && evtobj.altKey) {$(".eraserButton").trigger("click");} //ctrl+2
-        if (evtobj.keyCode == 51 && evtobj.altKey) {$(".textButton").trigger("click");} //ctrl+3
-        if (evtobj.keyCode == 52 && evtobj.altKey) {$(".findColorButton").trigger("click");} //ctrl+4
-        if (evtobj.keyCode == 53 && evtobj.altKey) {$(".lineButton").trigger("click");} //ctrl+5
-        if (evtobj.keyCode == 54 && evtobj.altKey) {$(".circleButton").trigger("click");} //ctrl+6
-        if (evtobj.keyCode == 55 && evtobj.altKey) {$(".rectangleButton").trigger("click");} //ctrl+7
-        if (evtobj.keyCode == 56 && evtobj.altKey) {$(".quadraticCurveButton").trigger("click");} //ctrl+8
-        if (evtobj.keyCode == 57 && evtobj.altKey) {$(".polygonButton").trigger("click");} //ctrl+9
+        if (evtobj.keyCode == 49 && evtobj.altKey) {$(".pencilButton").trigger("click");} //alt+1
+        if (evtobj.keyCode == 50 && evtobj.altKey) {$(".eraserButton").trigger("click");} //alt+2
+        if (evtobj.keyCode == 51 && evtobj.altKey) {$(".bubblesButton").trigger("click");} //alt+3
+        if (evtobj.keyCode == 52 && evtobj.altKey) {$(".wormButton").trigger("click");} //alt+4
+        if (evtobj.keyCode == 53 && evtobj.altKey) {$(".textButton").trigger("click");} //alt+5
+        if (evtobj.keyCode == 81 && evtobj.altKey) {$(".findColorButton").trigger("click");} //alt+q
+        if (evtobj.keyCode == 87 && evtobj.altKey) {$(".lineButton").trigger("click");} //alt+w
+        if (evtobj.keyCode == 69 && evtobj.altKey) {$(".quadraticCurveButton").trigger("click");} //alt+e
+        if (evtobj.keyCode == 82 && evtobj.altKey) {$(".circleButton").trigger("click");} //alt+r
+        if (evtobj.keyCode == 84 && evtobj.altKey) {$(".rectangleButton").trigger("click");} //alt+t
+        if (evtobj.keyCode == 65 && evtobj.altKey) {$(".polygonButton").trigger("click");} //alt+a
     }
 }
 
