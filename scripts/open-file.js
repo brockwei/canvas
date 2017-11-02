@@ -46,8 +46,9 @@ class OpenFile extends PaintFunction{
     onMouseUp(coord){
         this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
         this.contextReal.drawImage(this.image,coord[0]-this.imageHalfWidth,coord[1]-this.imageHalfHeight);
+        $('#import').val('');
         this.onFinish();
-        currentFunction = new DrawingFreehand(contextReal,contextDraft);
+        $(".active").trigger("click");
     }
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();

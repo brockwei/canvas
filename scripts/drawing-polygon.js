@@ -8,7 +8,6 @@ class DrawingPolygon extends PaintFunction{
     }
 
     onMouseDown(coord,event){
-        this.clearText(this.contextReal);//For text box bug(MF)
         this.contextReal.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextDraft.strokeStyle = canvasSettings.colorStroke; //canvas-configuration.js
         this.contextReal.lineCap = "round"; //line cap shape
@@ -43,13 +42,13 @@ class DrawingPolygon extends PaintFunction{
                 dragging = false;
                 this.contextDraft.clearRect(0,0,canvasDraft.width,canvasDraft.height);
                 this.contextReal.lineTo(this.firstOrigX,this.firstOrigY);
-                    this.pointsArr.push({"x":this.firstOrigX,"y":this.firstOrigY});
-                    console.log('pointsArr at 1-MouseUp '+JSON.stringify(this.pointsArr));
+                this.pointsArr.push({"x":this.firstOrigX,"y":this.firstOrigY});
+                console.log('pointsArr at 1-MouseUp '+JSON.stringify(this.pointsArr));
                 this.contextReal.stroke();
+                this.polygonFillTest();
+                console.log('Points array '+JSON.stringify(this.pointsArr));
+                this.pointsArr = [];
                 this.onFinish();//Stores undo state
-                    this.polygonFillTest();
-                    console.log('Points array '+JSON.stringify(this.pointsArr));
-                    this.pointsArr = [];
                 this.actionCount = 0;
             } else {
                 this.newX = coord[0];
@@ -63,7 +62,6 @@ class DrawingPolygon extends PaintFunction{
         }
         console.log('mouse up '+ coord[0],coord[1]);
     }
-
     onDragging(coord,event){
         if (this.actionCount === 0){
             this.toDrawDraft(this.firstOrigX,this.firstOrigY,coord[0],coord[1]);
@@ -71,7 +69,6 @@ class DrawingPolygon extends PaintFunction{
             this.toDrawDraft(this.newX,this.newY,coord[0],coord[1]);
         }
     }
-
     polygonFillTest(){
         this.contextReal.beginPath();
         this.contextReal.moveTo(this.pointsArr[0].x,this.pointsArr[0].y);
@@ -101,14 +98,6 @@ class DrawingPolygon extends PaintFunction{
         this.contextReal.moveTo(toX,toY);
             //this.pointsArr.push(toX,toY);
     }
-
-    clearText(){
-        $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
-        $('#textInput').val('');
-        this.textX= [];
-        this.textY = [];
-    }
-
     onFinish(){
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();
         canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
