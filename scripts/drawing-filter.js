@@ -24,7 +24,6 @@ canvasSettings.filterImage = function(filterRequested){
         }
         return filter.apply(null, args);
     };
-    //Grayscale filter
     Filters.grayscale = function(pixels, args) {
         var d = pixels.data;
         for (var i=0; i<d.length; i+=4) {
@@ -38,7 +37,6 @@ canvasSettings.filterImage = function(filterRequested){
         }
         return pixels;
     };
-    //Brightness filter
     Filters.brightness = function(pixels, adjustment) {
         var d = pixels.data;
         for (var i=0; i<d.length; i+=4) {
@@ -49,7 +47,7 @@ canvasSettings.filterImage = function(filterRequested){
         return pixels;
     };
 
-    //Convolution functions
+    //Convolution function
     Filters.tmpCanvas = document.createElement('canvas');
     Filters.tmpCtx = Filters.tmpCanvas.getContext('2d');
 
@@ -104,10 +102,12 @@ canvasSettings.filterImage = function(filterRequested){
         grayScale: Filters.filterImage(Filters.grayscale, currentImage),
         brighten: Filters.filterImage(Filters.brightness, currentImage, 40),
         sharpen: Filters.filterImage(Filters.convolute, currentImage, [0, -1, 0, -1, 5, -1, 0, -1, 0]),
-        //test: Filters.filterImage(Filters.convolute, currentImage, [0, -1, 0, -1, 5, -1, 0, -1, 0])
+        test: Filters.filterImage(Filters.convolute, currentImage, [0, -1, 0, -1, 5, -1, 0, -1, 0])
     }
 
     var filteredImage = filterObject[filterRequested];
+//    var filteredImage = Filters.filterImage(Filters.convolute, currentImage, [0, -1, 0, -1, 5, -1, 0, -1, 0]); //sharpen
+ //   var filteredImage = Filters.filterImage(Filters.convolute, currentImage, [0, -1, 0, -1, 5, -1, 0, -1, 0]);
     contextReal.putImageData(filteredImage,0,0);
 
     canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount] = new Image();

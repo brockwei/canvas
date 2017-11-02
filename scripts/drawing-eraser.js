@@ -21,7 +21,7 @@ class DrawingEraser extends PaintFunction{
     onMouseUp(){
         this.context.closePath();
         this.context.stroke();
-        this.onFinish();    
+        this.onFinish();
     }
     onMouseLeave(coord,event){
         this.context.closePath();

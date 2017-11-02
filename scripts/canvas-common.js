@@ -57,7 +57,7 @@ function desktopMode(){
 function mobileMode(){
     var hammertime = new Hammer(canvasDraft);
     hammertime.on('drag swipe tap press pan panup pandown', function(ev) {
-    console.log(ev.type);
+    //console.log(ev.type);
     });
     /*
         hammertime.on('tap',function(ev){

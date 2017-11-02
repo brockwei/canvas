@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="styles/main.css">
 		<link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
-		
 	</head>
 
 	<body>
@@ -24,13 +23,15 @@
 				<div class="toolsDropdown mobileHidden">
 					<div class="toolButton pencilButton active"><img class="img-responsive" src="images/pencil.png"></div>
 					<div class="toolButton eraserButton"><img class="img-responsive" src="images/eraser.png"></div>
+					<div class="toolButton bubblesButton"><img class="img-responsive" src="images/bubbles.png"></div>
+					<div class="toolButton wormButton"><img class="img-responsive" src="images/worm.png"></div>
 					<div class="toolButton textButton"><img class="img-responsive" src="images/text.png"></div>
 					<div class="toolButton findColorButton"><img class="img-responsive" src="images/colordropper.png"></div>
 
 					<div class="toolButton lineButton"><img class="img-responsive" src="images/line.png"></div>
+					<div class="toolButton quadraticCurveButton"><img class="img-responsive" src="images/curve.png"></div>
 					<div class="toolButton circleButton"><img class="img-responsive" src="images/circle.png"></div>
 					<div class="toolButton rectangleButton"><img class="img-responsive" src="images/rectangle.png"></div>
-					<div class="toolButton quadraticCurveButton"><img class="img-responsive" src="images/curve.png"></div>
 					<div class="toolButton polygonButton"><img class="img-responsive" src="images/polygon.png"></div>
 				</div>
 			</div>
@@ -89,7 +90,6 @@
 						<div class="btn undo"><img class="img-responsive" src="images/undo.png"></div>
 						<div class="btn redo"><img class="img-responsive" src="images/redo.png"></div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -112,10 +112,13 @@
 		<script src="scripts/undo.js"></script>
 
 		<!--Functions Scripts-->
+		<script src="scripts/drawing-worm.js"></script>
+		<script src="scripts/drawing-bezier.js"></script>
+		<script src="scripts/drawing-bubbles.js"></script>
+
 		<script src="scripts/drawing-line.js"></script>
 		<script src="scripts/drawing-rectangle.js"></script>
-		<script src="scripts/drawing-circle.js"></script>
-		<script src="scripts/drawing-freehand.js"></script>
+		<script src="scripts/drawing-ellipse.js"></script>
 		<script src="scripts/drawing-eraser.js"></script>
 		<script src="scripts/drawing-quadraticCurve.js"></script>
 		<script src="scripts/drawing-polygon.js"></script>
@@ -131,7 +134,7 @@
 
 		<script type='text/javascript'>    
 			//Initialize Canvas 
-			currentFunction = new DrawingFreehand(contextReal,contextDraft);
+			currentFunction = new DrawingBezier(contextReal,contextDraft);
 			canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
 			canvasReal.height = parseInt($("#canvasContainer").css("height").replace("px",""));
 			canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""));
@@ -144,23 +147,6 @@
 			canvasSettings.undoObject.states[canvasSettings.undoObject.actionCount].src = canvasReal.toDataURL();
 			canvasSettings.undoObject.actionCount++;
 
-			//Keep canvas on resize
-			$(window).resize(function(){
-				if($(window).width()>300){
-					var tempCanvas = document.createElement('canvas');
-					var tempContext = tempCanvas.getContext('2d');
-					tempCanvas.width = canvasReal.width;
-					tempCanvas.height = canvasReal.height;
-					tempContext.drawImage(canvasReal,0,0);
-					canvasReal.width = parseInt($("#canvasContainer").css("width").replace("px",""));
-					canvasReal.height = parseInt($("#canvasContainer").css("height").replace("px",""));
-					canvasDraft.width = parseInt($("#canvasContainer").css("width").replace("px",""));
-					canvasDraft.height = parseInt($("#canvasContainer").css("height").replace("px",""));
-					contextReal.fillStyle = "white";
-					contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
-					contextReal.drawImage(tempCanvas,0,0);
-				}
-			});
 		</script>
 	</body>
 </html>
