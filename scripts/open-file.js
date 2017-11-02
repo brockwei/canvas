@@ -11,7 +11,6 @@ function uploadImage(){
     });
 };
 
-
 class OpenFile extends PaintFunction{
     constructor(ctxReal,ctxDraft,img){
         super();

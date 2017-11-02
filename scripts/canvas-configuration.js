@@ -68,6 +68,7 @@ var canvasSettings = {
     }
 }
 
+//Hotkey function
 document.onkeydown = canvasSettings.keyPress;
 
 //Change text size
@@ -108,14 +109,17 @@ $('body').on("click",".toolButton", function(){
     //User experience for Mobile:
     $('.toolsDropdownButton').html($('.active').html());
 });
+
+//Hides text options
 $(window).resize(function(){
     $('#textOptions').css("display","none");
-})
+});
 //Clear text
 canvasSettings.clearText = function(){
     $('#textInput').css({"display":"none","transform":"translateY(0) translateX(0)"});
     $('#textInput').val('');
 }
+
 //Mobile Version
 $('body').on('click','.toolsDropdownButton',function(){
     $('.adminDropdown').addClass('mobileHidden');
